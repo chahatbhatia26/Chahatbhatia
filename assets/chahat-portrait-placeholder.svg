@@ -1,0 +1,21 @@
+<svg width="900" height="1125" viewBox="0 0 900 1125" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="1125" fill="#E8E3DC" />
+  <rect x="52" y="52" width="796" height="1021" fill="#111111" />
+  <rect x="116" y="116" width="668" height="893" fill="#171718" stroke="#F6F2EC" stroke-opacity="0.16" stroke-width="2" />
+
+  <path d="M301 717C301 612.618 385.618 528 490 528C594.382 528 679 612.618 679 717V887H301V717Z" fill="#2A2A2C" />
+  <ellipse cx="489.5" cy="402" rx="118.5" ry="142" fill="#262628" />
+  <ellipse cx="486.5" cy="404" rx="82.5" ry="101" fill="#F0EAE2" />
+  <path d="M361 770C361 699.86 417.86 643 488 643C558.14 643 615 699.86 615 770V886H361V770Z" fill="#D3C8BC" />
+  <path d="M402 286C427.333 252.667 462.467 236 507.4 236C565.8 236 609.333 266.167 638 326.5C656.667 366.5 666 408 666 451" stroke="#F6F2EC" stroke-opacity="0.24" stroke-width="14" stroke-linecap="square" />
+
+  <line x1="222" y1="116" x2="222" y2="1009" stroke="#F6F2EC" stroke-opacity="0.08" stroke-width="2" />
+  <line x1="678" y1="116" x2="678" y2="1009" stroke="#F6F2EC" stroke-opacity="0.08" stroke-width="2" />
+  <line x1="116" y1="912" x2="784" y2="912" stroke="#F6F2EC" stroke-opacity="0.08" stroke-width="2" />
+
+  <rect x="116" y="116" width="220" height="48" fill="#F6F2EC" />
+  <text x="132" y="147" fill="#111111" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3">PORTRAIT HOLDER</text>
+
+  <text x="117" y="966" fill="#F6F2EC" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">CHAHAT BHATIA</text>
+  <text x="117" y="996" fill="#F6F2EC" fill-opacity="0.58" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">PRODUCT DESIGNER</text>
+</svg>

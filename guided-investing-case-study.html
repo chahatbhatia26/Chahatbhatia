@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Designing a Guided Investing System for First-Time Users | Chahat Bhatia</title>
+    <meta
+      name="description"
+      content="A concise product design case study by Chahat Bhatia on designing a guided investing system for first-time investors."
+    />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230f0f10'/%3E%3Ctext x='50%25' y='57%25' text-anchor='middle' font-size='24' font-family='Arial, sans-serif' font-weight='700' letter-spacing='2' fill='%23f3efe8'%3ECB%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=guided-investing-case-1" />
+  </head>
+  <body class="case-page case-doc-page case-doc-page--guided">
+    <header class="site-header case-page__header" id="top">
+      <div class="shell site-header__inner">
+        <a
+          class="brand"
+          href="./index.html#top"
+          aria-label="Back to Chahat Bhatia portfolio"
+        >
+          <span class="brand__mark">CB</span>
+          <span class="brand__text">
+            <strong>Chahat Bhatia</strong>
+            <small>Product Designer</small>
+          </span>
+        </a>
+
+        <nav class="site-nav" aria-label="Case study sections">
+          <a href="#context">Context</a>
+          <a href="#insights">Insights</a>
+          <a href="#system">System</a>
+          <a href="#decisions">Decisions</a>
+          <a href="#impact">Impact</a>
+        </nav>
+
+        <a class="site-header__cta" href="./index.html#work">Back to work</a>
+      </div>
+    </header>
+
+    <main class="case-doc">
+      <section class="case-doc-hero" id="overview">
+        <div class="shell reveal">
+          <p class="kicker">Personal project / Investing UX</p>
+
+          <figure class="case-doc-cover">
+            <div class="case-doc-cover__visual">
+              <img
+                class="case-doc-cover__image"
+                src="./assets/guided-investing-cover.png"
+                alt="A wide cover visual of the guided investing system showing onboarding, portfolio composition, and health cues."
+              />
+            </div>
+          </figure>
+
+          <div class="case-doc-hero__grid">
+            <div class="case-doc-hero__title">
+              <h1>Designing a Guided Investing System for First-Time Users</h1>
+            </div>
+
+            <div class="case-doc-hero__summary">
+              <p>
+                Helping beginners move from confusion to confident investment
+                decisions through structured flows, contextual learning, and
+                portfolio guidance.
+              </p>
+              <p>
+                This exploration focuses on reducing fear, confusion, and
+                decision paralysis by making the journey easier to understand
+                before asking users to commit.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-doc-meta" aria-label="Guided investing metadata">
+            <div class="case-doc-meta__item">
+              <span>Role</span>
+              <strong>Product Designer</strong>
+            </div>
+            <div class="case-doc-meta__item">
+              <span>Type</span>
+              <strong>Personal Project</strong>
+            </div>
+            <div class="case-doc-meta__item">
+              <span>Focus</span>
+              <strong>UX Strategy, Decision Design, Interaction Design</strong>
+            </div>
+            <div class="case-doc-meta__item">
+              <span>Timeline</span>
+              <strong>4 weeks (placeholder)</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section" id="context">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">Context</p>
+            <h2>Why this problem exists</h2>
+          </div>
+
+          <div class="case-doc-section__body case-doc-section__body--narrow">
+            <p>
+              First-time investors don’t struggle with access — they struggle
+              with understanding. Too many options, unclear terminology, and
+              fear of making the wrong move create hesitation before action.
+            </p>
+          </div>
+
+          <div class="case-doc-guided-context-grid">
+            <article class="case-doc-guided-context-card">
+              <span>Product</span>
+              <h3>Guided investing platform</h3>
+              <p>
+                A concept for helping beginners move from onboarding to
+                portfolio creation without feeling dropped into financial
+                complexity too early.
+              </p>
+            </article>
+            <article class="case-doc-guided-context-card">
+              <span>User</span>
+              <h3>First-time investors</h3>
+              <p>
+                Users with intent to invest, but low confidence in choosing,
+                interpreting, and trusting the path in front of them.
+              </p>
+            </article>
+            <article class="case-doc-guided-context-card">
+              <span>Why it matters</span>
+              <h3>Confidence drives progression</h3>
+              <p>
+                When early steps feel opaque, hesitation grows, external advice
+                takes over, and onboarding loses momentum before action begins.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--soft" id="problem">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">Problem statement</p>
+            <h2>Confidence was breaking before commitment.</h2>
+          </div>
+
+          <div class="case-doc-guided-problem">
+            <p class="case-doc-problem-line">
+              How might we help first-time investors make confident decisions
+              without feeling overwhelmed or dependent on external advice?
+            </p>
+
+            <ul class="case-doc-list">
+              <li>Users were being asked to choose before they understood the landscape.</li>
+              <li>Financial language made even low-risk decisions feel high stakes.</li>
+              <li>Opaque recommendation logic weakened trust in the system.</li>
+              <li>Too many choices too early created hesitation and delayed action.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section" id="insights">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">What I learned</p>
+            <h2>The real friction was uncertainty, not effort.</h2>
+          </div>
+
+          <div class="case-doc-insight-grid">
+            <article class="case-doc-insight">
+              <p>Users don’t trust their own investment decisions in the first session.</p>
+            </article>
+            <article class="case-doc-insight">
+              <p>They rely heavily on friends, YouTube, and trend-led advice when the product doesn’t explain itself.</p>
+            </article>
+            <article class="case-doc-insight">
+              <p>They don’t understand why something is being recommended, only that it has been recommended.</p>
+            </article>
+            <article class="case-doc-insight">
+              <p>Too many choices up front create hesitation, re-reading, and stalled progression.</p>
+            </article>
+            <article class="case-doc-insight">
+              <p>Fear of doing it wrong is stronger than the desire to start, even when users have intent.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--soft" id="principles">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">Design principles</p>
+            <h2>The strategy behind the flow</h2>
+          </div>
+
+          <div class="case-doc-principles">
+            <article class="case-doc-principle">
+              <h3>Clarity over choice</h3>
+              <p>Reduce raw option volume before asking for commitment.</p>
+            </article>
+            <article class="case-doc-principle">
+              <h3>Guide, don’t overwhelm</h3>
+              <p>Turn intimidating decisions into smaller guided steps with context.</p>
+            </article>
+            <article class="case-doc-principle">
+              <h3>Explain decisions, not just outputs</h3>
+              <p>Recommendations need rationale to feel trustworthy and usable.</p>
+            </article>
+            <article class="case-doc-principle">
+              <h3>Build confidence before speed</h3>
+              <p>Understanding the path matters more than accelerating through it.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section" id="system">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">The system I designed</p>
+            <h2>A guided investing system, not a set of disconnected screens.</h2>
+          </div>
+
+          <div class="case-doc-pillar-grid">
+            <article class="case-doc-pillar">
+              <h3>Structured onboarding</h3>
+              <p>Helps users understand themselves before being asked to choose.</p>
+            </article>
+            <article class="case-doc-pillar">
+              <h3>Smart portfolio creation</h3>
+              <p>Turns intimidating choices into guided recommendations with clearer framing.</p>
+            </article>
+            <article class="case-doc-pillar">
+              <h3>Portfolio understanding</h3>
+              <p>Makes allocation, health, and next steps easier to interpret at a glance.</p>
+            </article>
+            <article class="case-doc-pillar">
+              <h3>Learning within the journey</h3>
+              <p>Brings education into context instead of separating it from action.</p>
+            </article>
+            <article class="case-doc-pillar">
+              <h3>Community and validation</h3>
+              <p>Adds reassurance through peer signals without replacing user agency.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--soft" id="flows">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">Key flows</p>
+            <h2>Where the system reduces fear and makes progress visible.</h2>
+          </div>
+
+          <div class="case-doc-flow-grid">
+            <article class="case-doc-flow">
+              <div class="case-doc-flow__shot">
+                <img
+                  class="case-doc-flow__image case-doc-flow__image--onboarding"
+                  src="./assets/guided-investing-cover.png"
+                  alt="Onboarding and profile setup views from the guided investing flow."
+                />
+              </div>
+              <div class="case-doc-flow__body">
+                <h3>Onboarding / profile setup</h3>
+                <ul class="case-doc-mini-list">
+                  <li><strong>Does:</strong> Builds a user profile through guided questions.</li>
+                  <li><strong>Solves:</strong> Prevents blank-state decisions at the very start.</li>
+                  <li><strong>Design move:</strong> Questions feel preparatory instead of risky.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="case-doc-flow">
+              <div class="case-doc-flow__shot">
+                <img
+                  class="case-doc-flow__image case-doc-flow__image--recommendations"
+                  src="./assets/guided-investing-cover.png"
+                  alt="Portfolio creation and recommendation screens from the investing system."
+                />
+              </div>
+              <div class="case-doc-flow__body">
+                <h3>Portfolio creation flow</h3>
+                <ul class="case-doc-mini-list">
+                  <li><strong>Does:</strong> Converts user inputs into guided portfolio suggestions.</li>
+                  <li><strong>Solves:</strong> Reduces the intimidation of comparing raw asset options.</li>
+                  <li><strong>Design move:</strong> Categories and next steps are easier to reason about.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="case-doc-flow">
+              <div class="case-doc-flow__shot">
+                <img
+                  class="case-doc-flow__image case-doc-flow__image--allocation"
+                  src="./assets/guided-investing-cover.png"
+                  alt="Allocation plan and portfolio health screens from the guided investing experience."
+                />
+              </div>
+              <div class="case-doc-flow__body">
+                <h3>Allocation plan / portfolio health</h3>
+                <ul class="case-doc-mini-list">
+                  <li><strong>Does:</strong> Shows how recommendations translate into a portfolio mix.</li>
+                  <li><strong>Solves:</strong> Replaces abstract numbers with understandable signals.</li>
+                  <li><strong>Design move:</strong> Health cues help users understand whether the plan feels balanced.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="case-doc-flow">
+              <div class="case-doc-flow__shot">
+                <img
+                  class="case-doc-flow__image case-doc-flow__image--community"
+                  src="./assets/guided-investing-cover.png"
+                  alt="Learning, community, and validation touchpoints within the guided investing system."
+                />
+              </div>
+              <div class="case-doc-flow__body">
+                <h3>Learning, suggestions, and community</h3>
+                <ul class="case-doc-mini-list">
+                  <li><strong>Does:</strong> Surfaces education and reassurance in the moment decisions are made.</li>
+                  <li><strong>Solves:</strong> Lowers dependency on off-platform advice loops.</li>
+                  <li><strong>Design move:</strong> Guidance appears when it matters, not as a separate burden.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section" id="decisions">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">What changed and why</p>
+            <h2>The decisions that made the system feel more usable.</h2>
+          </div>
+
+          <div class="case-doc-decisions">
+            <article class="case-doc-decision">
+              <h3>Guided questionnaire instead of open-ended choice</h3>
+              <div class="case-doc-decision__detail">
+                <span>Why</span>
+                <p>Beginners needed help articulating goals, risk, and confidence before comparing products.</p>
+              </div>
+              <div class="case-doc-decision__detail">
+                <span>Trade-off</span>
+                <p>The system becomes more opinionated, but reduces abandonment caused by blank-state uncertainty.</p>
+              </div>
+            </article>
+
+            <article class="case-doc-decision">
+              <h3>Simplified asset categories instead of deep financial jargon</h3>
+              <div class="case-doc-decision__detail">
+                <span>Why</span>
+                <p>Users understood category intent faster than product-specific language and investment terms.</p>
+              </div>
+              <div class="case-doc-decision__detail">
+                <span>Trade-off</span>
+                <p>Some fidelity is deferred, but the early flow becomes easier to enter and trust.</p>
+              </div>
+            </article>
+
+            <article class="case-doc-decision">
+              <h3>Portfolio health as signals instead of raw complexity</h3>
+              <div class="case-doc-decision__detail">
+                <span>Why</span>
+                <p>Users needed to know whether their choices looked healthy before interpreting detailed allocation logic.</p>
+              </div>
+              <div class="case-doc-decision__detail">
+                <span>Trade-off</span>
+                <p>Signals are less granular than expert dashboards, but dramatically easier to understand for beginners.</p>
+              </div>
+            </article>
+
+            <article class="case-doc-decision">
+              <h3>Learning embedded in the flow instead of separate education</h3>
+              <div class="case-doc-decision__detail">
+                <span>Why</span>
+                <p>Education works best when it answers the exact question the current step creates.</p>
+              </div>
+              <div class="case-doc-decision__detail">
+                <span>Trade-off</span>
+                <p>The system needs stronger anticipation of confusion, but it avoids sending users into side journeys.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--soft" id="improvements">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">How the experience became clearer</p>
+            <h2>From intimidating choices to understandable progress.</h2>
+          </div>
+
+          <figure class="case-doc-shot case-doc-shot--wide">
+            <div class="case-doc-shot__visual">
+              <img
+                class="case-doc-cover__image"
+                src="./assets/guided-investing-cover.png"
+                alt="A wide system view of the guided investing product showing recommendations, portfolio composition, and health signals."
+              />
+            </div>
+            <figcaption>
+              A shift from fragmented, data-heavy interactions to a more
+              structured flow built around guided decisions, visible rationale,
+              and understandable signals.
+            </figcaption>
+          </figure>
+
+          <div class="case-doc-compare-grid">
+            <article class="case-doc-compare-card">
+              <span>From</span>
+              <h3>Intimidating</h3>
+              <p>Users faced investment choices before understanding what they meant.</p>
+              <span>To</span>
+              <h3>Guided</h3>
+              <p>Questions, cues, and recommendations created a clearer way forward.</p>
+            </article>
+
+            <article class="case-doc-compare-card">
+              <span>From</span>
+              <h3>Fragmented</h3>
+              <p>Onboarding, portfolio creation, and learning felt disconnected from each other.</p>
+              <span>To</span>
+              <h3>Structured</h3>
+              <p>The journey moved as one system with clearer step-by-step progression.</p>
+            </article>
+
+            <article class="case-doc-compare-card">
+              <span>From</span>
+              <h3>Raw data</h3>
+              <p>Numbers and categories were visible, but not immediately understandable.</p>
+              <span>To</span>
+              <h3>Understandable signals</h3>
+              <p>Portfolio health and next steps became easier to read at a glance.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section" id="impact">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">What this unlocks</p>
+            <h2>Expected UX and product outcomes.</h2>
+          </div>
+
+          <div class="case-doc-impact">
+            <article class="case-doc-impact__metric">
+              <span>Outcome</span>
+              <strong>Reduced hesitation</strong>
+              <p>Clearer steps reduce re-reading and second-guessing in the earliest decisions.</p>
+            </article>
+            <article class="case-doc-impact__metric">
+              <span>Outcome</span>
+              <strong>More confidence</strong>
+              <p>Users understand why a path is being suggested before committing to it.</p>
+            </article>
+            <article class="case-doc-impact__metric">
+              <span>Outcome</span>
+              <strong>Lower dependency</strong>
+              <p>Integrated explanation reduces the need to leave the product for validation.</p>
+            </article>
+            <article class="case-doc-impact__metric">
+              <span>Outcome</span>
+              <strong>Stronger progression</strong>
+              <p>Users move through onboarding with more predictable momentum and less friction.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--soft" id="learnings">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">What this taught me</p>
+            <h2>Designing for beginners is really decision design.</h2>
+          </div>
+
+          <div class="case-doc-insight-grid">
+            <article class="case-doc-insight">
+              <p>Designing for beginners is about simplifying decisions, not just simplifying UI.</p>
+            </article>
+            <article class="case-doc-insight">
+              <p>Clarity comes from sequencing information well, not reducing it blindly.</p>
+            </article>
+            <article class="case-doc-insight">
+              <p>Trust grows when users understand why something is happening, not only what to do next.</p>
+            </article>
+            <article class="case-doc-insight">
+              <p>Product systems feel stronger when learning and action happen together instead of apart.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section" id="next-steps">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">What I’d take further</p>
+            <h2>Next steps</h2>
+          </div>
+
+          <div class="case-doc-section__body case-doc-section__body--narrow">
+            <ul class="case-doc-list">
+              <li>Validate the flow through usability testing with first-time investors.</li>
+              <li>Test whether guided suggestions reduce abandonment during onboarding.</li>
+              <li>Explore adaptive onboarding paths based on user confidence levels.</li>
+              <li>Strengthen recommendation explainability without making the system heavier.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--soft" id="full-case-study">
+        <div class="shell reveal">
+          <div class="case-doc-cta-block">
+            <div>
+              <p class="kicker">Full case study</p>
+              <h2>Want the full breakdown?</h2>
+              <p>
+                This page is the distilled version of the project. The full deck
+                includes detailed flows, rationale, iterations, and supporting
+                screens.
+              </p>
+            </div>
+
+            <div class="case-doc-footer">
+              <a
+                class="button button--dark"
+                href="https://example.com/guided-investing-full-case-study"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View full case study →
+              </a>
+              <a class="text-link" href="./index.html#work">Back to explorations</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <script src="./script.js?v=guided-investing-case-1"></script>
+  </body>
+</html>
