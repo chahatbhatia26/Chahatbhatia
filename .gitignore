@@ -8,3 +8,30 @@ build/
 .vercel/
 .netlify/
 
+# Local tooling
+.playwright-mcp/
+
+# Local preview and debug exports
+/broken-mobile-mockup.png
+/case-study-full*.png
+/case-study-snapshot.md
+/class-context-*.png
+/classroom-annotated-block.png
+/classroom-arrows-*.png
+/classroom-design-*.png
+/core-modules-*.png
+/core-modules-*.md
+/current-page-snapshot.md
+/decisions-anchor.png
+/design-*.png
+/even-row-margin-bumped.png
+/first-step-*.png
+/mobile-*.png
+/module-panel-fresh.png
+/pending-*.png
+/pill-tags-check.png
+/rollback-one-step-check.png
+/second-step-*.png
+/simple-tags-restored.png
+/statement-cube.js
+/third-step-book-selection-check.png
