@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Improving how users move through a lending journey | Chahat Bhatia</title>
+    <meta
+      name="description"
+      content="A product design case study by Chahat Bhatia on improving how users move through a lending journey."
+    />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230f0f10'/%3E%3Ctext x='50%25' y='57%25' text-anchor='middle' font-size='24' font-family='Arial, sans-serif' font-weight='700' letter-spacing='2' fill='%23f3efe8'%3ECB%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=lending-case-8" />
+    <style>
+      .case-doc-page--lending .case-doc-section--next {
+        padding-top: clamp(5rem, 8vw, 7rem);
+        padding-bottom: clamp(6rem, 9vw, 8rem);
+      }
+
+      .case-doc-page--lending .case-doc-next {
+        display: grid;
+        gap: clamp(1.5rem, 3vw, 2.25rem);
+      }
+
+      .case-doc-page--lending .case-doc-next .case-doc-section__header {
+        gap: 0.85rem;
+      }
+
+      .case-doc-page--lending .case-doc-next .case-doc-section__header h2 {
+        max-width: 14ch;
+      }
+
+      .case-doc-page--lending .case-doc-next__intro {
+        max-width: 42rem;
+      }
+
+      .case-doc-page--lending .case-doc-next__intro p {
+        margin: 0;
+        color: rgba(16, 16, 18, 0.68);
+        font-size: clamp(1.08rem, 1.45vw, 1.2rem);
+        line-height: 1.78;
+      }
+
+      .case-doc-page--lending .case-doc-next__intro p + p {
+        margin-top: 1rem;
+      }
+
+      .case-doc-page--lending .case-doc-next--final .case-doc-next__split {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
+        align-items: center;
+        gap: clamp(2rem, 4vw, 4.5rem);
+      }
+
+      .case-doc-page--lending .case-doc-next--final .case-doc-next__content {
+        display: grid;
+        gap: clamp(1.35rem, 2vw, 1.8rem);
+      }
+
+      .case-doc-page--lending .case-doc-next--final .case-doc-section__header h2 {
+        max-width: none;
+      }
+
+      .case-doc-page--lending .case-doc-next__illustration {
+        width: min(100%, 22rem);
+        margin: 0;
+        justify-self: end;
+      }
+
+      .case-doc-page--lending .case-doc-next__illustration svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .case-doc-page--lending .case-doc-next__illustration [data-bulb-halo],
+      .case-doc-page--lending .case-doc-next__illustration [data-bulb-core],
+      .case-doc-page--lending .case-doc-next__illustration [data-bulb-rays] {
+        transform-box: fill-box;
+        transform-origin: center center;
+      }
+
+      .case-doc-page--lending .case-doc-next__illustration [data-bulb-halo] {
+        animation: lendingFinalThoughtsBulbGlow 4.6s ease-in-out infinite;
+      }
+
+      .case-doc-page--lending .case-doc-next__illustration [data-bulb-core] {
+        animation: lendingFinalThoughtsBulbCore 4.6s ease-in-out infinite;
+      }
+
+      .case-doc-page--lending .case-doc-next__illustration [data-bulb-rays] {
+        animation: lendingFinalThoughtsBulbRays 4.6s ease-in-out infinite;
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-step__placeholder,
+      .case-doc-page--lending .case-doc-optimisation-compare__visual--new {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        border: 1px solid rgba(124, 136, 158, 0.14);
+        background:
+          radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.94), transparent 23rem),
+          radial-gradient(circle at 18% 24%, rgba(221, 230, 246, 0.42), transparent 25rem),
+          radial-gradient(circle at 84% 78%, rgba(232, 223, 207, 0.34), transparent 24rem),
+          linear-gradient(145deg, rgba(250, 251, 253, 0.98), rgba(242, 246, 250, 0.96) 58%, rgba(246, 243, 238, 0.94)),
+          #f7f6f3;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.88),
+          0 1.5rem 3.25rem rgba(73, 88, 118, 0.08);
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-step__placeholder::before,
+      .case-doc-page--lending .case-doc-optimisation-compare__visual--new::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 14%;
+        width: clamp(14rem, 38vw, 23rem);
+        height: clamp(14rem, 34vw, 20rem);
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(214, 225, 244, 0.24) 48%, rgba(214, 225, 244, 0) 76%);
+        filter: blur(18px);
+        opacity: 0.82;
+        z-index: 0;
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-step__placeholder::after,
+      .case-doc-page--lending .case-doc-optimisation-compare__visual--new::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.06) 34%, transparent 72%),
+          linear-gradient(90deg, rgba(104, 118, 145, 0.03) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(104, 118, 145, 0.03) 1px, transparent 1px);
+        background-repeat: no-repeat, repeat, repeat;
+        background-size: auto, 32px 32px, 32px 32px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.26), transparent 82%);
+        z-index: 0;
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-step__phone-frame,
+      .case-doc-page--lending .case-doc-optimisation-compare__frame--new {
+        position: relative;
+        z-index: 2;
+        transform: translateY(-0.2rem);
+        box-shadow:
+          0 2.1rem 4rem rgba(70, 84, 114, 0.13),
+          0 0 0 0.45rem rgba(255, 255, 255, 0.42),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-compare__visual--old .case-doc-optimisation-compare__frame {
+        opacity: 0.84;
+        filter: saturate(0.88);
+        box-shadow: 0 0.8rem 1.7rem rgba(18, 18, 22, 0.04);
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-badge {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 3;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.48rem 0.72rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(118, 130, 152, 0.14);
+        box-shadow: 0 0.9rem 1.8rem rgba(70, 84, 114, 0.08);
+        color: #465a7b;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        backdrop-filter: blur(14px);
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-badge::before {
+        content: "";
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #7d96bf, #5f769c);
+        box-shadow: 0 0 0 0.18rem rgba(125, 150, 191, 0.14);
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-callouts {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        pointer-events: none;
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-callout {
+        position: absolute;
+        max-width: 11.5rem;
+        padding: 0.62rem 0.75rem 0.66rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(118, 130, 152, 0.14);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(246, 248, 250, 0.82)),
+          rgba(255, 255, 255, 0.86);
+        box-shadow: 0 1rem 2rem rgba(70, 84, 114, 0.09);
+        color: rgba(27, 31, 38, 0.68);
+        font-size: 0.74rem;
+        line-height: 1.45;
+        backdrop-filter: blur(14px);
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-callout strong {
+        display: block;
+        margin-bottom: 0.16rem;
+        color: #26344d;
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-callout--tl {
+        top: 4.25rem;
+        left: 1.1rem;
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-callout--tr {
+        top: 5rem;
+        right: 1.1rem;
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-callout--bl {
+        bottom: 2rem;
+        left: 1.2rem;
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-callout--br {
+        right: 1.2rem;
+        bottom: 2.2rem;
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-callout--mr {
+        top: 50%;
+        right: 1.2rem;
+        transform: translateY(-50%);
+      }
+
+      .case-doc-page--lending .case-doc-optimisation-callout--ml {
+        top: 50%;
+        left: 1.2rem;
+        transform: translateY(-50%);
+      }
+
+      @keyframes lendingFinalThoughtsBulbGlow {
+        0%,
+        100% {
+          opacity: 0.52;
+          transform: scale(0.96);
+        }
+
+        45%,
+        55% {
+          opacity: 1;
+          transform: scale(1.03);
+        }
+      }
+
+      @keyframes lendingFinalThoughtsBulbCore {
+        0%,
+        100% {
+          opacity: 0.88;
+          transform: scale(0.985);
+        }
+
+        45%,
+        55% {
+          opacity: 1;
+          transform: scale(1.01);
+        }
+      }
+
+      @keyframes lendingFinalThoughtsBulbRays {
+        0%,
+        100% {
+          opacity: 0.42;
+        }
+
+        45%,
+        55% {
+          opacity: 0.82;
+        }
+      }
+
+      @media (max-width: 1120px) {
+        .case-doc-page--lending .case-doc-next--final .case-doc-next__split {
+          grid-template-columns: 1fr;
+          gap: 1.8rem;
+        }
+
+        .case-doc-page--lending .case-doc-next__illustration {
+          justify-self: center;
+          width: min(100%, 18rem);
+        }
+
+        .case-doc-page--lending .case-doc-optimisation-callout {
+          max-width: 9.4rem;
+          font-size: 0.68rem;
+        }
+
+        .case-doc-page--lending .case-doc-optimisation-callout strong {
+          font-size: 0.71rem;
+        }
+
+        .case-doc-page--lending .case-doc-optimisation-callout--tl,
+        .case-doc-page--lending .case-doc-optimisation-callout--tr {
+          top: 4.7rem;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .case-doc-page--lending .case-doc-optimisation-callouts {
+          display: none;
+        }
+
+        .case-doc-page--lending .case-doc-optimisation-badge {
+          top: 0.8rem;
+          left: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="case-page case-doc-page case-doc-page--lending">
+    <header class="site-header case-page__header" id="top">
+      <div class="shell site-header__inner">
+        <a
+          class="brand"
+          href="./index.html#top"
+          aria-label="Back to Chahat Bhatia portfolio"
+        >
+          <span class="brand__mark">CB</span>
+          <span class="brand__text">
+            <strong>Chahat Bhatia</strong>
+            <small>Product Designer</small>
+          </span>
+        </a>
+
+        <nav class="site-nav" aria-label="Case study sections">
+          <a href="#understanding">Understanding</a>
+          <a href="#old-flow">Design</a>
+          <a href="#optimisation-step-1">Decisions</a>
+          <a href="#impact">Impact</a>
+        </nav>
+
+        <a class="site-header__cta" href="./index.html#work">Back to work</a>
+      </div>
+    </header>
+
+    <main class="case-doc">
+      <section class="case-doc-hero" id="overview">
+        <div class="shell reveal">
+          <p class="kicker">Fintech / Homepage</p>
+          <div class="case-doc-hero__grid">
+            <div class="case-doc-hero__title">
+              <h1>Improving the lending journey flow</h1>
+            </div>
+
+            <div class="case-doc-hero__summary">
+              <p>
+                Focused on reducing drop-offs across key steps, guiding users
+                through critical financial decisions, and simplifying the
+                overall journey from intent to disbursal.
+              </p>
+            </div>
+          </div>
+
+          <figure
+            class="case-doc-cover case-doc-cover--classroom"
+            aria-label="Refyne homepage case study thumbnail"
+          >
+            <div class="case-doc-cover__visual">
+              <img
+                class="case-doc-cover__image case-doc-cover__image--classroom"
+                src="./assets/lending-cover.png"
+                alt="Refyne homepage product screens"
+              />
+            </div>
+          </figure>
+
+          <div class="case-doc-meta" aria-label="Refyne homepage metadata">
+            <div class="case-doc-meta__item">
+              <span>Role</span>
+              <strong>Product designer</strong>
+            </div>
+            <div class="case-doc-meta__item">
+              <span>Type</span>
+              <strong>Fintech / Salary Advance Product</strong>
+            </div>
+            <div class="case-doc-meta__item">
+              <span>Stakeholders</span>
+              <strong>Employees &amp; employers</strong>
+            </div>
+            <div class="case-doc-meta__item case-doc-meta__item--impact">
+              <span>Focus</span>
+              <strong>Improving conversion across the lending journey</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-company" id="company">
+        <div class="shell reveal">
+          <div class="case-doc-company__grid">
+            <div class="case-doc-company__copy">
+              <div class="case-doc-section__header">
+                <p class="kicker">About the company</p>
+                <h2>What is Refyne?</h2>
+              </div>
+
+              <div class="case-doc-section__body">
+                <p>
+                  Refyne is a financial wellness platform built to help working
+                  professionals feel more in control of their money. It gives
+                  employees access to their earned salary when they need it,
+                  along with simple tools to better manage and plan their
+                  finances.
+                </p>
+
+                <p>
+                  The goal is to reduce everyday financial stress — from
+                  mid-month cash crunches to unexpected expenses — while helping
+                  companies build a more engaged and less stressed workforce.
+                </p>
+              </div>
+            </div>
+
+            <div class="case-doc-company__visual" data-company-visual>
+              <img
+                class="case-doc-company__logo"
+                src="./assets/refyne-logo.png"
+                alt="Refyne logo"
+              />
+
+              <div class="case-doc-company__tags" aria-label="Refyne platform strengths">
+                <span class="case-doc-company__chip">Instant Salary Access</span>
+                <span class="case-doc-company__chip">Financial Wellness</span>
+                <span class="case-doc-company__chip">Peace of Mind</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-research" id="understanding">
+        <div class="shell reveal">
+          <div class="case-doc-problem case-doc-problem--lending">
+            <div class="case-doc-problem__copy">
+              <div class="case-doc-section__header">
+                <p class="kicker">Problem Statement</p>
+                <h2>Why weren’t users completing the journey?</h2>
+              </div>
+
+              <div class="case-doc-section__body case-doc-problem__intro">
+                <p>
+                  Refyne&rsquo;s salary advance journey showed strong intent, but
+                  weak completion. A large number of users were starting the
+                  flow but dropping off before disbursal, especially at key
+                  decision points like EMI selection and autopay setup.
+                </p>
+              </div>
+
+              <div class="case-doc-problem__note">
+                While the flow covered all the necessary steps, the experience
+                didn&rsquo;t do enough to support users through them.
+              </div>
+            </div>
+
+            <div class="case-doc-problem__stack">
+              <div class="case-doc-problem__label">Key Problems</div>
+
+              <div
+                class="case-doc-problem__grid"
+                aria-label="Key lending journey problems"
+              >
+                <article class="case-doc-problem__card">
+                  <span>01</span>
+                  <h3>Lack of decision clarity</h3>
+                  <p>
+                    Users could see repayment options, but often struggled to
+                    evaluate them and decide what worked best.
+                  </p>
+                </article>
+
+                <article class="case-doc-problem__card">
+                  <span>02</span>
+                  <h3>High cognitive load</h3>
+                  <p>
+                    Information was presented all at once, without much
+                    guidance, making the journey feel heavy.
+                  </p>
+                </article>
+
+                <article class="case-doc-problem__card">
+                  <span>03</span>
+                  <h3>Trust gaps at critical moments</h3>
+                  <p>
+                    Steps involving repayments and bank setup created
+                    hesitation and anxiety.
+                  </p>
+                </article>
+
+                <article class="case-doc-problem__card">
+                  <span>04</span>
+                  <h3>Unclear transitions</h3>
+                  <p>
+                    Generic loaders and lack of context made it hard to
+                    understand what was happening between steps.
+                  </p>
+                </article>
+
+                <article class="case-doc-problem__card">
+                  <span>05</span>
+                  <h3>High dependency on customer support</h3>
+                  <p>
+                    Users often depended on support for basic questions during
+                    the journey, particularly around repayments and autopay.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-findings" id="research">
+        <div class="shell reveal">
+          <div class="case-doc-section__header case-doc-findings__header">
+            <p class="kicker">Research and findings</p>
+            <h2>What did users actually say?</h2>
+          </div>
+
+          <div class="case-doc-section__body case-doc-findings__intro">
+            <p>
+              To understand where the journey was breaking, I looked at a mix
+              of customer support queries and direct user conversations.
+            </p>
+          </div>
+
+          <div class="case-doc-findings__grid">
+            <article class="case-doc-findings__panel">
+              <div class="case-doc-findings__panel-head">
+                <span>01</span>
+                <h3>Customer support insights</h3>
+              </div>
+              <p>
+                A large number of users were reaching out during the
+                journey&mdash;often for small but important clarifications.
+              </p>
+              <ul class="case-doc-findings__stats">
+                <li><strong>~32%</strong> of users contacted support before completing the flow</li>
+                <li><strong>~65%</strong> of queries were around repayments, charges, EMI details, and disbursal amounts.</li>
+                <li><strong>~22%</strong> were related to autopay / bank setup</li>
+                <li>Most of these questions were repetitive and occurred at the same steps</li>
+              </ul>
+            </article>
+
+            <article class="case-doc-findings__panel">
+              <div class="case-doc-findings__panel-head">
+                <span>02</span>
+                <h3>User calls (first-hand insights)</h3>
+              </div>
+              <p>
+                To go deeper, I also spoke to users who had either dropped off
+                or hesitated during the journey to understand what was going
+                through their mind.
+              </p>
+              <div class="case-doc-findings__subhead">Some common patterns that came up:</div>
+              <ul class="case-doc-findings__list">
+                <li>Unclear how and when deductions would happen</li>
+                <li>Interest rates and charges were hard to find</li>
+                <li>Why set up autopay if it&rsquo;s deducted from salary?</li>
+                <li>Users were exploring the flow just to understand costs</li>
+                <li>Users often didn&rsquo;t understand why they were receiving less than what they selected</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="case-doc-findings__questions">
+            <div class="case-doc-findings__questions-label">Findings</div>
+            <p>
+              Across both support queries and calls, the same questions kept
+              coming up:
+            </p>
+            <div class="case-doc-findings__question-grid" aria-label="Repeated user questions">
+              <span>&ldquo;Will money get deducted automatically?&rdquo;</span>
+              <span>&ldquo;Why do I need to set-up auto pay?&rdquo;</span>
+              <span>&ldquo;How much will I actually repay?&rdquo;</span>
+              <span>&ldquo;Why am I receiving less than what I selected?&rdquo;</span>
+              <span>&ldquo;Are there any hidden charges?&rdquo;</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-old-flow" id="old-flow">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">Optimisation</p>
+            <h2>What we changed<br />and why</h2>
+          </div>
+
+          <div class="case-doc-section__body case-doc-old-flow__intro">
+            <p>
+              Breaking down the key improvements made across the journey to
+              better support user decisions and improve completion.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-optimisation-step" id="optimisation-step-1">
+        <div class="shell reveal">
+          <div class="case-doc-optimisation-step__grid">
+            <div class="case-doc-optimisation-step__copy">
+              <div class="case-doc-section__header">
+                <p class="kicker">Screen 1 / Salary Advance Landing Page</p>
+                <h2>Setting context before users start</h2>
+              </div>
+
+              <div class="case-doc-section__body case-doc-optimisation-step__intro">
+                <p>
+                  In the earlier experience, users were taken straight into the
+                  journey without enough context&mdash;often leading to confusion
+                  around repayments, deductions, and overall product understanding.
+                </p>
+                <p>
+                  To address this, we introduced a dedicated entry screen that
+                  sets expectations upfront before users begin the process.
+                </p>
+              </div>
+
+              <div class="case-doc-optimisation-step__points">
+                <article class="case-doc-optimisation-step__point">
+                  <h3>Clear value upfront</h3>
+                  <p>
+                    Communicates the offering immediately &mdash; &ldquo;Get instant
+                    cash of &#8377;X&rdquo;
+                  </p>
+                </article>
+                <article class="case-doc-optimisation-step__point">
+                  <h3>Benefits surfaced early</h3>
+                  <p>
+                    Highlights key advantages like paperless process, instant
+                    transfer, and zero foreclosure fees
+                  </p>
+                </article>
+                <article class="case-doc-optimisation-step__point">
+                  <h3>Deduction clarity introduced early</h3>
+                  <p>
+                    Explicitly explains that EMIs will be deducted directly from
+                    salary, reducing uncertainty around repayments
+                  </p>
+                </article>
+                <article class="case-doc-optimisation-step__point">
+                  <h3>Trust signals added</h3>
+                  <p>Reinforces safety through RBI-compliant messaging</p>
+                </article>
+                <article class="case-doc-optimisation-step__point">
+                  <h3>Single, focused CTA</h3>
+                  <p>
+                    Guides users clearly into the next step &mdash; Enter withdrawal
+                    amount
+                  </p>
+                </article>
+              </div>
+            </div>
+
+            <figure class="case-doc-shot case-doc-optimisation-step__visual">
+              <div
+                class="case-doc-shot__visual case-doc-optimisation-step__placeholder"
+                aria-label="Salary advance landing page screen"
+              >
+                <span class="case-doc-optimisation-badge">New screen</span>
+                <div class="case-doc-optimisation-callouts" aria-hidden="true">
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--tl">
+                    <strong>Value upfront</strong>
+                    Users immediately see what they can access.
+                  </div>
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--tr">
+                    <strong>Benefit stack</strong>
+                    Paperless, fast, and fee-light cues build momentum.
+                  </div>
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--br">
+                    <strong>Deduction clarity</strong>
+                    Salary-based EMI logic is explained before the flow starts.
+                  </div>
+                </div>
+                <div class="case-doc-optimisation-step__phone-frame">
+                  <img
+                    class="case-doc-optimisation-step__image"
+                    src="./assets/lending-salary-advance-landing-step-v1.png"
+                    alt="Salary advance landing page showing amount, benefits, deduction mode, and withdrawal CTA"
+                  />
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-optimisation-compare" id="optimisation-step-2">
+        <div class="shell reveal">
+          <div class="case-doc-optimisation-compare__copy">
+            <div class="case-doc-section__header">
+              <p class="kicker">Screen 2 / Enter amount</p>
+              <h2>Turning amount selection into a guided decision</h2>
+            </div>
+
+            <div class="case-doc-section__body case-doc-optimisation-compare__intro">
+              <p>
+                In the earlier experience, amount entry was treated as a basic
+                input step. Users were expected to enter a number without clear
+                visibility into their eligibility, limits, or what a
+                &ldquo;right&rdquo; amount looks like.
+              </p>
+              <p>
+                This led to guesswork, repeated edits, and low confidence before
+                moving forward.
+              </p>
+              <p>
+                The updated experience reframes this step as a decision-making
+                moment&mdash;introducing clear boundaries, flexible controls, and
+                contextual cues that help users explore and finalize an amount
+                with confidence.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-doc-optimisation-compare__stage">
+            <figure class="case-doc-shot case-doc-optimisation-compare__panel">
+              <figcaption class="case-doc-optimisation-compare__label">Old screen</figcaption>
+              <div
+                class="case-doc-shot__visual case-doc-optimisation-compare__visual case-doc-optimisation-compare__visual--old"
+                aria-label="Old enter amount screen"
+              >
+                <div class="case-doc-optimisation-compare__frame">
+                  <img
+                    class="case-doc-optimisation-compare__image"
+                    src="./assets/lending-enter-amount-old-v1.png"
+                    alt="Old salary top up screen with amount entry and continue button"
+                  />
+                </div>
+              </div>
+            </figure>
+
+            <figure class="case-doc-shot case-doc-optimisation-compare__panel">
+              <figcaption class="case-doc-optimisation-compare__label">New screen</figcaption>
+              <div
+                class="case-doc-shot__visual case-doc-optimisation-compare__visual case-doc-optimisation-compare__visual--new"
+                aria-label="Redesigned enter amount screen"
+              >
+                <span class="case-doc-optimisation-badge">Redesigned</span>
+                <div class="case-doc-optimisation-callouts" aria-hidden="true">
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--tl">
+                    <strong>Eligible limit</strong>
+                    Frames the choice before the user starts exploring.
+                  </div>
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--mr">
+                    <strong>Slider + edit</strong>
+                    Supports both quick exploration and precise control.
+                  </div>
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--bl">
+                    <strong>Guided CTA</strong>
+                    The next step is explicit, not generic.
+                  </div>
+                </div>
+                <div class="case-doc-optimisation-compare__frame case-doc-optimisation-compare__frame--new">
+                  <img
+                    class="case-doc-optimisation-compare__image"
+                    src="./assets/lending-enter-amount-new-v1.png"
+                    alt="Redesigned enter amount screen with clearer amount entry, slider, and primary CTA"
+                  />
+                </div>
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-doc-optimisation-compare__details">
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Guided interaction instead of raw input</h3>
+              <p>
+                Slider + editable field allows both exploration and precision
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Contextual CTA for forward movement</h3>
+              <p>
+                The CTA shifts from a generic action to a guided next step
+                (&ldquo;Choose tenure&rdquo;), helping users understand what comes
+                next in the journey
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Clear eligibility framing</h3>
+              <p>
+                Showing &ldquo;eligible up to &#8377;X&rdquo; reduces guesswork and
+                anchors decision-making
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Subtle trust-building cues</h3>
+              <p>
+                Messaging like &ldquo;No hidden charges&rdquo; and &ldquo;100% secure
+                process&rdquo; reassures users at a moment where financial
+                hesitation is high
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-optimisation-compare" id="optimisation-step-3">
+        <div class="shell reveal">
+          <div class="case-doc-optimisation-compare__copy">
+            <div class="case-doc-section__header">
+              <p class="kicker">Screen 3 / Choose tenure</p>
+              <h2>Making repayment decisions easier at the right moment</h2>
+            </div>
+
+            <div class="case-doc-section__body case-doc-optimisation-compare__intro">
+              <p>
+                Choosing an EMI plan is one of the most critical decisions in
+                the journey. In the earlier experience, while details like
+                charges and interest rates were available, they were surfaced
+                later on the summary screen.
+              </p>
+              <p>
+                This meant users were expected to select an EMI plan without
+                fully understanding the financial implications upfront, often
+                leading to hesitation or back-and-forth navigation.
+              </p>
+              <p>
+                The updated experience brings more structure and guidance to
+                this step, helping users make a decision with better clarity
+                and confidence.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-doc-optimisation-compare__stage">
+            <figure class="case-doc-shot case-doc-optimisation-compare__panel">
+              <figcaption class="case-doc-optimisation-compare__label">Old screen</figcaption>
+              <div
+                class="case-doc-shot__visual case-doc-optimisation-compare__visual case-doc-optimisation-compare__visual--old"
+                aria-label="Old choose tenure screen"
+              >
+                <div class="case-doc-optimisation-compare__frame">
+                  <img
+                    class="case-doc-optimisation-compare__image"
+                    src="./assets/lending-choose-tenure-old-v1.png"
+                    alt="Old choose tenure screen"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </figure>
+
+            <figure class="case-doc-shot case-doc-optimisation-compare__panel">
+              <figcaption class="case-doc-optimisation-compare__label">New screen</figcaption>
+              <div
+                class="case-doc-shot__visual case-doc-optimisation-compare__visual case-doc-optimisation-compare__visual--new"
+                aria-label="Redesigned choose tenure screen"
+              >
+                <span class="case-doc-optimisation-badge">Redesigned</span>
+                <div class="case-doc-optimisation-callouts" aria-hidden="true">
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--tl">
+                    <strong>Recommended plan</strong>
+                    A strong default reduces decision fatigue.
+                  </div>
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--mr">
+                    <strong>Clear comparison</strong>
+                    EMI, tenure, and interest scan together in one place.
+                  </div>
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--bl">
+                    <strong>More options</strong>
+                    Extra choices stay accessible without crowding the screen.
+                  </div>
+                </div>
+                <div class="case-doc-optimisation-compare__frame case-doc-optimisation-compare__frame--new">
+                  <img
+                    class="case-doc-optimisation-compare__image"
+                    src="./assets/lending-choose-tenure-new-v1.png"
+                    alt="Redesigned choose tenure screen"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-doc-optimisation-compare__details">
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Guided decision with a recommended option</h3>
+              <p>
+                A default plan reduces the effort required to evaluate multiple
+                options.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Clearer comparison at a glance</h3>
+              <p>
+                EMI amount, tenure, and interest rate are easier to scan
+                together, reducing mental load.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Reduced need for backtracking</h3>
+              <p>
+                By improving clarity at this stage, users don’t need to rely on
+                later screens to validate decisions.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Focused set of options</h3>
+              <p>
+                Limiting visible choices prevents overwhelm, with the option to
+                explore more if needed.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Smoother progression with a simple CTA</h3>
+              <p>
+                `Continue` keeps the journey moving forward without introducing
+                friction.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-optimisation-compare" id="optimisation-step-4">
+        <div class="shell reveal">
+          <div class="case-doc-optimisation-compare__copy">
+            <div class="case-doc-section__header">
+              <p class="kicker">Screen 4 / Loan overview</p>
+              <h2>Bringing clarity to what users are actually committing to</h2>
+            </div>
+
+            <div class="case-doc-section__body case-doc-optimisation-compare__intro">
+              <p>
+                This is the point where users stop and try to understand the
+                full picture, how much they&rsquo;ll receive, what gets deducted,
+                and what they&rsquo;ll need to repay.
+              </p>
+              <p>
+                In the earlier experience, while all the information was
+                technically present, it wasn&rsquo;t structured in a way that made
+                it easy to grasp. Users often couldn&rsquo;t clearly tell how much
+                money they would actually receive after deductions, as charges
+                like processing fees were not highlighted strongly enough.
+                Monthly EMI and repayment details also lacked emphasis, making
+                it harder to quickly evaluate the commitment.
+              </p>
+              <p>
+                On top of this, the flow itself introduced friction. If a user
+                wanted to change the amount or tenure after reviewing these
+                details, they had to cancel the entire application and restart
+                the journey. This broke the flow at a critical moment and often
+                led to drop-offs.
+              </p>
+              <p>
+                The updated experience restructures this step to make
+                information clearer, more visible, and easier to act on, while
+                also allowing users to review and adjust their decisions
+                without being forced to start over.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-doc-optimisation-compare__stage">
+            <figure class="case-doc-shot case-doc-optimisation-compare__panel">
+              <figcaption class="case-doc-optimisation-compare__label">Old screen</figcaption>
+              <div
+                class="case-doc-shot__visual case-doc-optimisation-compare__visual case-doc-optimisation-compare__visual--old"
+                aria-label="Old loan overview screen"
+              >
+                <div class="case-doc-optimisation-compare__frame">
+                  <img
+                    class="case-doc-optimisation-compare__image"
+                    src="./assets/lending-loan-overview-old-v1.png"
+                    alt="Old loan overview screen"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </figure>
+
+            <figure class="case-doc-shot case-doc-optimisation-compare__panel">
+              <figcaption class="case-doc-optimisation-compare__label">New screen</figcaption>
+              <div
+                class="case-doc-shot__visual case-doc-optimisation-compare__visual case-doc-optimisation-compare__visual--new"
+                aria-label="Redesigned loan overview screen"
+              >
+                <span class="case-doc-optimisation-badge">Redesigned</span>
+                <div class="case-doc-optimisation-callouts" aria-hidden="true">
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--tl">
+                    <strong>You’ll get clarity</strong>
+                    Net disbursal stands out immediately.
+                  </div>
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--mr">
+                    <strong>Charges breakdown</strong>
+                    Deductions are visible before commitment.
+                  </div>
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--bl">
+                    <strong>Edit in flow</strong>
+                    Users can adjust decisions without restarting.
+                  </div>
+                </div>
+                <div class="case-doc-optimisation-compare__frame case-doc-optimisation-compare__frame--new">
+                  <img
+                    class="case-doc-optimisation-compare__image"
+                    src="./assets/lending-loan-overview-new-v1.png"
+                    alt="Redesigned loan overview screen"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-doc-optimisation-compare__details">
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Clear “You’ll get” vs “Loan amount” separation</h3>
+              <p>
+                Makes the final disbursed amount immediately visible and
+                understandable.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Deductions made explicit</h3>
+              <p>
+                Charges are structured and surfaced clearly to avoid surprises.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Stronger emphasis on monthly EMI</h3>
+              <p>
+                Key repayment information is easier to spot and evaluate.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Edit flexibility within the flow</h3>
+              <p>
+                Users can revisit and adjust decisions without restarting the
+                journey.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Application creation moved to a later stage</h3>
+              <p>
+                Instead of locking users in early, the application is now
+                created after this step (at autopay/OTP), allowing users to
+                review before committing.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-optimisation-compare" id="optimisation-step-5">
+        <div class="shell reveal">
+          <div class="case-doc-optimisation-compare__copy">
+            <div class="case-doc-section__header">
+              <p class="kicker">Screen 5 / Setup autopay</p>
+              <h2>Reducing hesitation at the most sensitive step</h2>
+            </div>
+
+            <div class="case-doc-section__body case-doc-optimisation-compare__intro">
+              <p>
+                Setting up autopay is where intent often drops, because this is
+                the moment users feel they are committing financially.
+              </p>
+              <p>
+                In the earlier experience, this step felt rigid and unclear.
+                Users were asked to set up autopay without fully understanding
+                why it was needed, how it worked, or what their alternatives
+                were. The experience was limited to a few methods, lacked
+                flexibility, and introduced friction by forcing users into a
+                setup flow without enough context or reassurance.
+              </p>
+              <p>
+                Additionally, key information wasn&rsquo;t structured
+                effectively. Details like the linked bank account and minimum
+                balance requirements were separated, even though the required
+                balance varies by bank. This lack of proximity made it harder
+                for users to quickly connect the information, adding to
+                confusion and hesitation.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-doc-optimisation-compare__stage">
+            <figure class="case-doc-shot case-doc-optimisation-compare__panel">
+              <figcaption class="case-doc-optimisation-compare__label">Old screen</figcaption>
+              <div
+                class="case-doc-shot__visual case-doc-optimisation-compare__visual case-doc-optimisation-compare__visual--old"
+                aria-label="Old setup autopay screen"
+              >
+                <div class="case-doc-optimisation-compare__frame">
+                  <img
+                    class="case-doc-optimisation-compare__image"
+                    src="./assets/lending-setup-autopay-old-v1.png"
+                    alt="Old setup autopay screen"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </figure>
+
+            <figure class="case-doc-shot case-doc-optimisation-compare__panel">
+              <figcaption class="case-doc-optimisation-compare__label">New screen</figcaption>
+              <div
+                class="case-doc-shot__visual case-doc-optimisation-compare__visual case-doc-optimisation-compare__visual--new"
+                aria-label="Redesigned setup autopay screen"
+              >
+                <span class="case-doc-optimisation-badge">Redesigned</span>
+                <div class="case-doc-optimisation-callouts" aria-hidden="true">
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--tl">
+                    <strong>Why autopay?</strong>
+                    Context is explained before the user commits.
+                  </div>
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--mr">
+                    <strong>Quick setup via UPI</strong>
+                    Fastest path is clearly prioritized.
+                  </div>
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--bl">
+                    <strong>Balance guidance</strong>
+                    Bank-linked details are grouped for faster understanding.
+                  </div>
+                </div>
+                <div class="case-doc-optimisation-compare__frame case-doc-optimisation-compare__frame--new">
+                  <img
+                    class="case-doc-optimisation-compare__image"
+                    src="./assets/lending-setup-autopay-new-v1.png"
+                    alt="Redesigned setup autopay screen"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-doc-optimisation-compare__details">
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Clear explanation of “why autopay is needed”</h3>
+              <p>
+                A contextual explanation upfront reduces anxiety and answers the
+                biggest user question immediately.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Reframing autopay as a backup, not a primary deduction</h3>
+              <p>
+                Messaging clarifies that salary deduction is the primary mode,
+                and autopay acts as a safety net.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Multiple setup options for flexibility</h3>
+              <p>
+                Introducing UPI, Aadhaar, Netbanking, and Debit Card gives
+                users choice and control.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Prioritisation of fastest method (UPI)</h3>
+              <p>
+                Highlighting “Quick setup via UPI” reduces friction and speeds
+                up completion.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Improved information proximity</h3>
+              <p>
+                Bank account details and corresponding minimum balance
+                requirements are placed together, making it easier to
+                understand what applies to the selected account.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Trust-building through transparency</h3>
+              <p>
+                Information like small bank charges, balance requirements, and
+                “how it works” removes ambiguity.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-optimisation-compare" id="optimisation-step-6">
+        <div class="shell reveal">
+          <div class="case-doc-optimisation-compare__copy">
+            <div class="case-doc-section__header">
+              <p class="kicker">Screen 6 / Transaction states (success, failure, pending)</p>
+              <h2>Designing transaction states that communicate, not confuse</h2>
+            </div>
+
+            <div class="case-doc-section__body case-doc-optimisation-compare__intro">
+              <p>
+                The final transaction states are critical, they determine
+                whether users feel confident, anxious, or unsure about what
+                just happened to their money.
+              </p>
+              <p>
+                In the earlier experience, while different states existed, they
+                lacked clarity and depth. Failure and pending states were
+                especially weak, users were informed that something went wrong
+                or was in progress, but without any clear reason or guidance on
+                what to do next. This often led to confusion, repeated retries,
+                or support calls.
+              </p>
+              <p>
+                There was also inconsistency in how these states were
+                presented, making it harder for users to quickly differentiate
+                between success, failure, and pending scenarios.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-doc-optimisation-compare__stage">
+            <figure class="case-doc-shot case-doc-optimisation-compare__panel">
+              <figcaption class="case-doc-optimisation-compare__label">Old screen</figcaption>
+              <div
+                class="case-doc-shot__visual case-doc-optimisation-compare__visual case-doc-optimisation-compare__visual--old"
+                aria-label="Old transaction state screen"
+              >
+                <div class="case-doc-optimisation-compare__frame">
+                  <img
+                    class="case-doc-optimisation-compare__image"
+                    src="./assets/lending-transaction-states-old-v1.png"
+                    alt="Old transaction state screen"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </figure>
+
+            <figure class="case-doc-shot case-doc-optimisation-compare__panel">
+              <figcaption class="case-doc-optimisation-compare__label">New screen</figcaption>
+              <div
+                class="case-doc-shot__visual case-doc-optimisation-compare__visual case-doc-optimisation-compare__visual--new"
+                aria-label="Redesigned transaction success screen"
+              >
+                <span class="case-doc-optimisation-badge">Redesigned</span>
+                <div class="case-doc-optimisation-callouts" aria-hidden="true">
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--tl">
+                    <strong>State-specific reasons</strong>
+                    Users understand what happened, not just the status.
+                  </div>
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--mr">
+                    <strong>Recovery guidance</strong>
+                    Next actions are built into the screen.
+                  </div>
+                  <div class="case-doc-optimisation-callout case-doc-optimisation-callout--bl">
+                    <strong>Consistent structure</strong>
+                    Success, pending, and failure feel predictable.
+                  </div>
+                </div>
+                <div class="case-doc-optimisation-compare__frame case-doc-optimisation-compare__frame--new">
+                  <img
+                    class="case-doc-optimisation-compare__image"
+                    src="./assets/lending-transaction-states-new-v1.png"
+                    alt="Redesigned transaction success screen"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </figure>
+          </div>
+
+          <div class="case-doc-optimisation-compare__details">
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Clear differentiation between all states</h3>
+              <p>
+                Success, failure, and pending are visually and structurally
+                distinct, making them instantly recognizable.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Introduction of reason mapping (critical improvement)</h3>
+              <p>
+                Failure and pending states now provide specific, contextual
+                reasons (e.g., bank issue, insufficient balance, processing
+                delay), reducing ambiguity.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Actionable guidance for recovery</h3>
+              <p>
+                Instead of leaving users stuck, failure states now guide users
+                on what to do next (retry, change method, wait).
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Reassuring messaging in pending states</h3>
+              <p>
+                Clear communication that the process is underway, along with
+                expectation setting, reduces anxiety.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Consistent structure across states</h3>
+              <p>
+                All states follow a predictable pattern: status →
+                explanation → details → next step, improving usability.
+              </p>
+            </article>
+            <article class="case-doc-optimisation-compare__detail-row">
+              <h3>Maintaining access to key information</h3>
+              <p>
+                Users can still view transaction details and EMI info across
+                all states without losing context.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-lending-impact" id="impact">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">Impact</p>
+            <h2>What changed after the redesign</h2>
+          </div>
+
+          <div class="case-doc-lending-impact__grid">
+            <article class="case-doc-lending-impact__card">
+              <div class="case-doc-lending-impact__stat">
+                <span class="case-doc-lending-impact__trend case-doc-lending-impact__trend--up" aria-hidden="true">↗</span>
+                <span class="case-doc-lending-impact__metric">+9%</span>
+              </div>
+              <h3>Conversion</h3>
+              <p>More users completed the journey end-to-end.</p>
+            </article>
+
+            <article class="case-doc-lending-impact__card">
+              <div class="case-doc-lending-impact__stat">
+                <span class="case-doc-lending-impact__trend case-doc-lending-impact__trend--down" aria-hidden="true">↘</span>
+                <span class="case-doc-lending-impact__metric">−20%</span>
+              </div>
+              <h3>Support queries</h3>
+              <p>Clearer in-flow information reduced dependency on support.</p>
+            </article>
+
+            <article class="case-doc-lending-impact__card">
+              <div class="case-doc-lending-impact__stat">
+                <span class="case-doc-lending-impact__trend case-doc-lending-impact__trend--up" aria-hidden="true">↗</span>
+                <span class="case-doc-lending-impact__metric">Key step uplift</span>
+              </div>
+              <h3>Smoother progression</h3>
+              <p>Less drop-offs at EMI selection and autopay.</p>
+            </article>
+
+            <article class="case-doc-lending-impact__card">
+              <div class="case-doc-lending-impact__stat">
+                <span class="case-doc-lending-impact__trend case-doc-lending-impact__trend--up" aria-hidden="true">↗</span>
+                <span class="case-doc-lending-impact__metric">Confidence up</span>
+              </div>
+              <h3>User confidence</h3>
+              <p>Fewer doubts around charges, disbursal amount, and repayments.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-lending-prototype" id="prototype">
+        <div class="shell reveal">
+          <div class="case-doc-lending-prototype__grid">
+            <div class="case-doc-lending-prototype__copy">
+              <div class="case-doc-section__header">
+                <h2>Prototype</h2>
+              </div>
+
+                <div class="case-doc-section__body">
+                  <p>
+                    A refined journey designed to make financial decisions feel
+                    clearer, faster, and more confident through thoughtful
+                    interactions and seamless transitions.
+                  </p>
+                </div>
+            </div>
+
+            <div class="case-doc-lending-prototype__visual" aria-label="Prototype preview">
+              <div class="case-doc-lending-prototype__device">
+                <div class="case-doc-lending-prototype__screen">
+                  <video
+                    class="case-doc-lending-prototype__video"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                    aria-label="Lending prototype demo"
+                  >
+                    <source src="assets/lending-prototype-v1.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-lending-learnings" id="learnings">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">Learnings</p>
+            <h2>What I learned from this project</h2>
+          </div>
+
+          <div class="case-doc-lending-learnings__grid">
+            <article class="case-doc-lending-learnings__item">
+              <h3>Clarity is about reducing decisions, not adding explanations</h3>
+              <p>
+                Users weren&rsquo;t confused because information was missing they
+                were confused because they had to figure things out themselves.
+                Guiding the decision mattered more than explaining everything.
+              </p>
+            </article>
+
+            <article class="case-doc-lending-learnings__item">
+              <h3>In fintech, hesitation = drop-off</h3>
+              <p>
+                Every moment of doubt (EMI, charges, autopay) directly impacted
+                conversion. Reducing that hesitation had a clear business
+                impact.
+              </p>
+            </article>
+
+            <article class="case-doc-lending-learnings__item">
+              <h3>Trust is created in the flow, not added on top</h3>
+              <p>
+                Users don&rsquo;t trust because you say &ldquo;secure.&rdquo; They
+                trust when things feel predictable, transparent, and easy to
+                understand at every step.
+              </p>
+            </article>
+
+            <article class="case-doc-lending-learnings__item">
+              <h3>Small UX details carry disproportionate weight</h3>
+              <p>
+                Loaders, transitions, and states weren&rsquo;t just polish they
+                were moments where users either felt in control or felt lost.
+              </p>
+            </article>
+
+            <article class="case-doc-lending-learnings__item case-doc-lending-learnings__item--wide">
+              <h3>Product decisions are UX decisions</h3>
+              <p>
+                Something as simple as when an application gets created can
+                either create friction or remove it entirely. This project made
+                it clear that UX goes beyond screens.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--next" id="final-thoughts">
+        <div class="shell reveal">
+          <div class="case-doc-next case-doc-next--final">
+            <div class="case-doc-next__split">
+              <div class="case-doc-next__content">
+              <div class="case-doc-section__header">
+                <p class="kicker">Final Thoughts</p>
+                  <h2>Final Thoughts</h2>
+              </div>
+
+                <div class="case-doc-next__intro">
+                <p>
+                    In the end, this project wasn&rsquo;t really about
+                    redesigning a flow, it was about removing the moments where
+                    users paused, felt unsure, or had to second guess what
+                    they were doing. By making the journey clearer at each
+                    step, the goal was simply to help users move forward with a
+                    bit more confidence and a lot less doubt.
+                </p>
+              </div>
+            </div>
+
+              <figure class="case-doc-next__illustration" aria-hidden="true">
+                <svg
+                  viewBox="0 0 520 520"
+                  role="presentation"
+                  focusable="false"
+                >
+                  <defs>
+                    <radialGradient id="lending-final-thoughts-halo" cx="50%" cy="45%" r="54%">
+                      <stop offset="0%" stop-color="#ffe7a9" stop-opacity="0.95" />
+                      <stop offset="54%" stop-color="#f6e6bc" stop-opacity="0.42" />
+                      <stop offset="100%" stop-color="#f7f2e7" stop-opacity="0" />
+                    </radialGradient>
+                    <linearGradient id="lending-final-thoughts-bulb-fill" x1="24%" y1="18%" x2="76%" y2="82%">
+                      <stop offset="0%" stop-color="#fff7d9" />
+                      <stop offset="54%" stop-color="#fde6a5" />
+                      <stop offset="100%" stop-color="#f2c96d" />
+                    </linearGradient>
+                    <linearGradient id="lending-final-thoughts-shine" x1="18%" y1="12%" x2="78%" y2="78%">
+                      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+                      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+                    </linearGradient>
+                    <linearGradient id="lending-final-thoughts-cap-fill" x1="18%" y1="0%" x2="82%" y2="100%">
+                      <stop offset="0%" stop-color="#e7bf69" />
+                      <stop offset="100%" stop-color="#bf9137" />
+                    </linearGradient>
+                    <linearGradient id="lending-final-thoughts-base-fill" x1="50%" y1="0%" x2="50%" y2="100%">
+                      <stop offset="0%" stop-color="#cf9c3d" />
+                      <stop offset="100%" stop-color="#9f7429" />
+                    </linearGradient>
+                    <filter id="lending-final-thoughts-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#bb9a53" flood-opacity="0.16" />
+                    </filter>
+                    <filter id="lending-final-thoughts-soft-blur" x="-30%" y="-30%" width="160%" height="160%">
+                      <feGaussianBlur stdDeviation="24" />
+                    </filter>
+                  </defs>
+
+                  <g data-bulb-halo>
+                    <circle
+                      cx="260"
+                      cy="238"
+                      r="146"
+                      fill="url(#lending-final-thoughts-halo)"
+                      filter="url(#lending-final-thoughts-soft-blur)"
+                    />
+                    <circle
+                      cx="260"
+                      cy="238"
+                      r="106"
+                      fill="#fff1c9"
+                      opacity="0.32"
+                    />
+                  </g>
+
+                  <g data-bulb-rays fill="#d0a34f" opacity="0.72">
+                    <rect x="251" y="42" width="18" height="54" rx="9" />
+                    <rect x="251" y="42" width="18" height="54" rx="9" transform="rotate(45 260 238)" />
+                    <rect x="251" y="42" width="18" height="54" rx="9" transform="rotate(90 260 238)" />
+                    <rect x="251" y="42" width="18" height="54" rx="9" transform="rotate(135 260 238)" />
+                    <rect x="251" y="42" width="18" height="54" rx="9" transform="rotate(225 260 238)" />
+                    <rect x="251" y="42" width="18" height="54" rx="9" transform="rotate(270 260 238)" />
+                    <rect x="251" y="42" width="18" height="54" rx="9" transform="rotate(315 260 238)" />
+                  </g>
+
+                  <g data-bulb-core filter="url(#lending-final-thoughts-shadow)">
+                    <path
+                      d="M260 108c-78 0-132 52-132 126 0 42 18 74 43 101 20 21 31 45 35 73h108c4-28 15-52 35-73 25-27 43-59 43-101 0-74-54-126-132-126Z"
+                      fill="url(#lending-final-thoughts-bulb-fill)"
+                    />
+
+                    <path
+                      d="M192 164c-30 18-48 53-48 86 0 12 10 21 22 21 12 0 21-9 21-21 0-24 11-47 29-63 13-11 13-31 1-42-7-7-17-9-25-5Z"
+                      fill="url(#lending-final-thoughts-shine)"
+                      opacity="0.72"
+                    />
+
+                    <rect x="252" y="190" width="16" height="83" rx="8" fill="#fdf0c8" opacity="0.96" />
+                    <rect x="228" y="231" width="64" height="16" rx="8" fill="#fdf0c8" opacity="0.96" />
+                    <circle cx="260" cy="239" r="17" fill="#f7d67f" />
+
+                    <path d="M214 408h92v29c0 15-12 27-27 27h-38c-15 0-27-12-27-27v-29Z" fill="url(#lending-final-thoughts-cap-fill)" />
+                    <rect x="207" y="458" width="106" height="18" rx="9" fill="url(#lending-final-thoughts-base-fill)" opacity="0.92" />
+                    <rect x="217" y="484" width="86" height="16" rx="8" fill="url(#lending-final-thoughts-base-fill)" opacity="0.84" />
+                  </g>
+
+                  <g fill="#a27a2b" opacity="0.28">
+                    <rect x="224" y="437" width="72" height="9" rx="4.5" />
+                    <rect x="230" y="458" width="60" height="8" rx="4" />
+                    <rect x="238" y="484" width="44" height="7" rx="3.5" />
+                  </g>
+
+                  <g fill="#d2ab58" opacity="0.72">
+                    <path d="M126 142l8 17 17 8-17 8-8 17-8-17-17-8 17-8 8-17Z" />
+                    <path d="M385 161l6 13 13 6-13 6-6 13-6-13-13-6 13-6 6-13Z" />
+                    <circle cx="341" cy="118" r="6" />
+                    <circle cx="168" cy="302" r="6" />
+                    <circle cx="355" cy="302" r="6" />
+                  </g>
+                </svg>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--more-projects" id="view-other-projects">
+        <div class="shell reveal">
+          <div class="case-doc-more-projects">
+            <div class="case-doc-section__header">
+              <p class="kicker">View Other Projects</p>
+              <h2>Keep exploring the work</h2>
+            </div>
+
+            <div class="case-doc-more-projects__grid">
+              <a class="case-doc-more-projects__card" href="./case-study.html">
+                <div class="case-doc-more-projects__visual">
+                  <img
+                    src="./assets/classroom-management-cover-v2.png"
+                    alt="Classroom management case study thumbnail showing dashboard screens."
+                  />
+                </div>
+                <div class="case-doc-more-projects__body">
+                  <p class="case-doc-more-projects__eyebrow">Edtech / Classroom app</p>
+                  <h3>Classroom Management</h3>
+                  <p>
+                    A unified platform that simplifies assignments, attendance,
+                    and communication for teachers, students, and parents.
+                  </p>
+                  <span class="case-doc-more-projects__link">Open case study</span>
+                </div>
+              </a>
+
+              <a class="case-doc-more-projects__card" href="./refyne-case-study.html">
+                <div class="case-doc-more-projects__visual">
+                  <img
+                    src="./assets/refyne-context.png"
+                    alt="Refyne homepage redesign thumbnail showing dashboard and service modules."
+                  />
+                </div>
+                <div class="case-doc-more-projects__body">
+                  <p class="case-doc-more-projects__eyebrow">Fintech / Homepage</p>
+                  <h3>Rethinking the Homepage for Clarity, Discovery, and Growth</h3>
+                  <p>
+                    Better structure, clearer priorities, and stronger guidance
+                    turned the homepage into a more useful product surface.
+                  </p>
+                  <span class="case-doc-more-projects__link">Open case study</span>
+                </div>
+              </a>
+
+              <a
+                class="case-doc-more-projects__card"
+                href="./exploration-case-study.html?v=exploration-case-2"
+              >
+                <div class="case-doc-more-projects__visual">
+                  <img
+                    src="./assets/digital-wellness-thumb.png"
+                    alt="Digital wellness exploration preview showing multiple light mobile screens."
+                  />
+                </div>
+                <div class="case-doc-more-projects__body">
+                  <p class="case-doc-more-projects__eyebrow">Personal Exploration</p>
+                  <h3>Digital Wellness for Everyday Life</h3>
+                  <p>
+                    Motion studies and calmer interactions that explore how
+                    healthier digital habits can feel more intentional.
+                  </p>
+                  <span class="case-doc-more-projects__link">Open case study</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <script src="./script.js?v=classroom-research-60"></script>
+  </body>
+</html>

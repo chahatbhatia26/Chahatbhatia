@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refyne Homepage Revamp | Chahat Bhatia</title>
+    <meta
+      name="description"
+      content="A product design case study by Chahat Bhatia on rethinking Refyne’s homepage for clarity, discovery, and scalable growth."
+    />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230f0f10'/%3E%3Ctext x='50%25' y='57%25' text-anchor='middle' font-size='24' font-family='Arial, sans-serif' font-weight='700' letter-spacing='2' fill='%23f3efe8'%3ECB%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=refyne-homepage-1" />
+  </head>
+  <body class="case-page case-doc-page case-doc-page--classroom">
+    <header class="site-header case-page__header" id="top">
+      <div class="shell site-header__inner">
+        <a
+          class="brand"
+          href="./index.html#top"
+          aria-label="Back to Chahat Bhatia portfolio"
+        >
+          <span class="brand__mark">CB</span>
+          <span class="brand__text">
+            <strong>Chahat Bhatia</strong>
+            <small>Product Designer</small>
+          </span>
+        </a>
+
+        <nav class="site-nav" aria-label="Case study sections">
+          <a href="#understanding">Understanding</a>
+          <a href="#design">Design</a>
+          <a href="#decisions">Decisions</a>
+          <a href="#impact">Impact</a>
+        </nav>
+
+        <a class="site-header__cta" href="./index.html#work">Back to work</a>
+      </div>
+    </header>
+
+    <main class="case-doc">
+      <section class="case-doc-hero" id="overview">
+        <div class="shell reveal">
+          <p class="kicker">FINTECH / REFYNE</p>
+          <div class="case-doc-hero__grid">
+            <div class="case-doc-hero__title">
+              <h1>
+                Homepage for<br />
+                Clarity, Discovery,<br />
+                and Growth
+              </h1>
+            </div>
+
+            <div class="case-doc-hero__summary">
+              <p>
+                A design-led exploration of turning a single-use dashboard into
+                a scalable fintech experience through better structure and
+                guidance.
+              </p>
+            </div>
+          </div>
+
+          <figure
+            class="case-doc-cover case-doc-cover--classroom"
+            aria-label="Refyne homepage case study thumbnail"
+          >
+            <div class="case-doc-cover__visual">
+              <img
+                class="case-doc-cover__image case-doc-cover__image--classroom"
+                src="./assets/refyne-context.png"
+                alt="Refyne homepage product screens"
+              />
+            </div>
+          </figure>
+
+          <div class="case-doc-meta" aria-label="Refyne homepage metadata">
+            <div class="case-doc-meta__item">
+              <span>Role</span>
+              <strong>Product Designer</strong>
+            </div>
+            <div class="case-doc-meta__item">
+              <span>Type</span>
+              <strong>Fintech / Financial Wellness Platform</strong>
+            </div>
+            <div class="case-doc-meta__item">
+              <span>Stakeholders</span>
+              <strong>Employees, employers</strong>
+            </div>
+            <div class="case-doc-meta__item case-doc-meta__item--impact">
+              <span>Focus</span>
+              <strong>Revamping Homepage</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-company" id="company">
+        <div class="shell reveal">
+          <div class="case-doc-company__grid">
+            <div class="case-doc-company__copy">
+              <div class="case-doc-section__header">
+                <p class="kicker">About the company</p>
+                <h2>What is Refyne?</h2>
+              </div>
+
+              <div class="case-doc-section__body">
+                <p>
+                  Refyne is a financial wellness platform built to help working
+                  professionals feel more in control of their money. It gives
+                  employees access to their earned salary when they need it,
+                  along with simple tools to better manage and plan their
+                  finances.
+                </p>
+
+                <p>
+                  The goal is to reduce everyday financial stress — from
+                  mid-month cash crunches to unexpected expenses — while helping
+                  companies build a more engaged and less stressed workforce.
+                </p>
+              </div>
+            </div>
+
+            <div class="case-doc-company__visual" data-company-visual>
+              <img
+                class="case-doc-company__logo"
+                src="./assets/refyne-logo.png"
+                alt="Refyne logo"
+              />
+
+              <div class="case-doc-company__tags" aria-label="Refyne platform strengths">
+                <span class="case-doc-company__chip">Instant Salary Access</span>
+                <span class="case-doc-company__chip">Financial Wellness</span>
+                <span class="case-doc-company__chip">Peace of Mind</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-research" id="understanding">
+        <div class="shell reveal">
+          <div class="case-doc-problem">
+            <div class="case-doc-problem__copy">
+              <div class="case-doc-section__header">
+                <p class="kicker">Problem Statement</p>
+                <h2>Why the experience stopped at a single action</h2>
+              </div>
+
+              <div class="case-doc-section__body case-doc-problem__intro">
+                <p>
+                  Refyne’s homepage was built to do one thing really
+                  well—help users withdraw salary quickly. And it did that.
+                </p>
+                <p>
+                  But beyond that, the experience stopped. Users would open the
+                  app, complete their task, and leave—without engaging with
+                  anything else.
+                </p>
+                <p>
+                  As new services were introduced, the issue wasn’t space—it
+                  was structure. There was no clear hierarchy or guidance,
+                  making discovery difficult and adding more features only
+                  increased clutter.
+                </p>
+              </div>
+
+              <p class="case-doc-problem__outcome">
+                So while the core task remained fast and efficient, the overall
+                experience stayed transactional and shallow—with low awareness
+                of additional services and very little reason for users to come
+                back.
+              </p>
+            </div>
+
+            <div class="case-doc-problem__stack">
+              <div class="case-doc-problem__label">Key Problems</div>
+
+              <div class="case-doc-problem__grid" aria-label="Key homepage problems">
+                <article class="case-doc-problem__card">
+                  <span>01</span>
+                  <h3>One-time use</h3>
+                  <p>Open → withdraw → leave. No exploration.</p>
+                </article>
+
+                <article class="case-doc-problem__card">
+                  <span>02</span>
+                  <h3>No clear priority</h3>
+                  <p>Everything feels equally important.</p>
+                </article>
+
+                <article class="case-doc-problem__card">
+                  <span>03</span>
+                  <h3>Hard to discover</h3>
+                  <p>Features exist but go unnoticed.</p>
+                </article>
+
+                <article class="case-doc-problem__card">
+                  <span>04</span>
+                  <h3>Not built to scale</h3>
+                  <p>Adding more = more clutter.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--soft" id="solution">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">Design Goal</p>
+            <h2>Designing a more usable and scalable homepage</h2>
+          </div>
+
+          <div class="case-doc-context">
+            <div class="case-doc-section__body">
+              <p>
+                The goal wasn’t just to redesign the homepage—it was to rethink
+                how it works.
+              </p>
+              <p>
+                Right now, the experience was built around a single action. We
+                wanted to expand that without making it feel complicated. The
+                idea was to keep the core task fast and simple, but also make
+                it easier for users to understand what else they can do.
+              </p>
+              <p>
+                This meant introducing more structure—so users can quickly see
+                what needs their attention, what they can do next, and what
+                else the product offers. At the same time, the layout needed to
+                support future features without feeling cluttered.
+              </p>
+              <p>
+                In short, the goal was to move from a single-use screen to
+                something that feels more guided, useful, and built to grow.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section" id="design">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">Design</p>
+            <h2>Homepage revamp</h2>
+          </div>
+
+          <div class="case-doc-revamp">
+            <div class="case-doc-revamp__screens" aria-label="Homepage revamp comparison">
+              <figure class="case-doc-revamp__screen case-doc-revamp__screen--before">
+                <figcaption>Before</figcaption>
+                <div class="case-doc-revamp__frame case-doc-revamp__frame--before">
+                  <img
+                    class="case-doc-revamp__image case-doc-revamp__image--before"
+                    src="./assets/refyne-home-before.png"
+                    alt="Previous Refyne homepage screen before the redesign."
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+
+              <figure class="case-doc-revamp__screen case-doc-revamp__screen--after">
+                <figcaption>After</figcaption>
+                <div class="case-doc-revamp__frame">
+                  <img
+                    class="case-doc-revamp__image"
+                    src="./assets/refyne-home-after.png"
+                    alt="Refyne homepage redesign showing clearer structure and stronger feature discovery."
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--soft" id="decisions">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">Design Decisions</p>
+            <h2>Designing the homepage around what users need, step by step</h2>
+          </div>
+
+          <div class="case-doc-decision-module">
+            <figure class="case-doc-decision-module__visual">
+              <div class="case-doc-decision-module__stage">
+                <img
+                  class="case-doc-decision-module__image"
+                  src="./assets/refyne-decision-full.png"
+                  alt="Refyne redesigned homepage with withdrawal card, service shortcuts, and discovery modules."
+                  loading="lazy"
+                />
+
+                <article class="case-doc-decision-note case-doc-decision-note--primary">
+                  <span>01</span>
+                  <h3>Primary action stays obvious</h3>
+                  <p>The withdrawal action remains the clearest entry point for repeat users.</p>
+                </article>
+
+                <article class="case-doc-decision-note case-doc-decision-note--trust">
+                  <span>02</span>
+                  <h3>Trust is built upfront</h3>
+                  <p>
+                    Key benefits are placed exactly where decisions happen,
+                    making the value of the product immediately clear.
+                  </p>
+                  <p class="case-doc-decision-note__meta">
+                    Zero foreclosure fees<br />
+                    Safe, paperless process<br />
+                    24/7 instant disbursal
+                  </p>
+                </article>
+
+                <article class="case-doc-decision-note case-doc-decision-note--attention">
+                  <span>03</span>
+                  <h3>Prioritize what needs attention</h3>
+                  <p>
+                    This section appears only when there&rsquo;s something
+                    important to act on, surfacing critical tasks early with
+                    clear cues and direct CTAs for quick resolution.
+                  </p>
+                </article>
+
+                <article class="case-doc-decision-note case-doc-decision-note--services">
+                  <span>04</span>
+                  <h3>Keep primary products upfront</h3>
+                  <p>Core products are positioned right after the main action, making them easy to access without disrupting the flow.</p>
+                </article>
+
+                <article class="case-doc-decision-note case-doc-decision-note--explore">
+                  <span>05</span>
+                  <h3>Don’t compromise on campaigns</h3>
+                  <p>Banners are placed strategically within the flow to retain visibility and engagement, without disrupting the primary user journey.</p>
+                </article>
+
+                <article class="case-doc-decision-note case-doc-decision-note--grid-break">
+                  <span>06</span>
+                  <h3>Break the grid intentionally</h3>
+                  <p>Introducing larger cards creates contrast and prevents the layout from feeling repetitive, helping users focus on what matters.</p>
+                </article>
+
+                <article class="case-doc-decision-note case-doc-decision-note--secondary">
+                  <span>07</span>
+                  <h3>Keep secondary actions out of the way</h3>
+                  <p>Less critical features are pushed to the end, ensuring they remain accessible without interfering with primary tasks.</p>
+                </article>
+
+                <article class="case-doc-decision-note case-doc-decision-note--footer">
+                  <span>08</span>
+                  <h3>Keep secondary actions out of the way</h3>
+                  <p>Less critical features are pushed to the end, ensuring they remain accessible without interfering with primary tasks.</p>
+                </article>
+
+                <article class="case-doc-decision-note case-doc-decision-note--nav">
+                  <span>09</span>
+                  <h3>Simplify bottom navigation</h3>
+                  <p>Primary actions are prioritized in the bottom nav, while secondary features like Rewards are moved to the top to reduce clutter and improve focus.</p>
+                </article>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section" id="impact">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">Impact</p>
+            <h2>Designing for what comes after the first action</h2>
+          </div>
+
+          <div class="case-doc-impact-summary">
+            <div class="case-doc-impact-summary__copy">
+              <p>The earlier experience worked, but only once. The new homepage makes sure it doesn&rsquo;t stop there.</p>
+              <p>By introducing structure, hierarchy, and clear progression, the screen now supports <strong>what users do next</strong>, not just what they came for.</p>
+            </div>
+
+            <div class="case-doc-impact-summary__outcomes" aria-label="Impact outcomes">
+              <article class="case-doc-impact-summary__card">
+                <p>Action stays fast</p>
+              </article>
+              <article class="case-doc-impact-summary__card">
+                <p>Discovery feels natural</p>
+              </article>
+              <article class="case-doc-impact-summary__card">
+                <p>The system is ready to grow</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section" id="learnings">
+        <div class="shell reveal">
+          <div class="case-doc-section__header">
+            <p class="kicker">Learnings</p>
+            <h2>Designing for scale requires structure</h2>
+          </div>
+
+          <div class="case-doc-section__body case-doc-section__body--narrow">
+            <p>
+              As the product grows, clarity doesn&rsquo;t come from reducing
+              features, but from organizing them better. Without hierarchy,
+              even useful features get lost. This project reinforced that not
+              everything needs equal visibility, prioritization is what makes
+              an interface feel simple. More importantly, a homepage
+              shouldn&rsquo;t just support a task, but guide what users do next
+              while staying flexible for future growth.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--more-projects" id="view-other-projects">
+        <div class="shell reveal">
+          <div class="case-doc-more-projects">
+            <div class="case-doc-section__header">
+              <p class="kicker">View Other Projects</p>
+              <h2>Keep exploring the work</h2>
+            </div>
+
+            <div class="case-doc-more-projects__grid">
+              <a class="case-doc-more-projects__card" href="./case-study.html">
+                <div class="case-doc-more-projects__visual">
+                  <img
+                    src="./assets/classroom-management-cover-v2.png"
+                    alt="Classroom management case study thumbnail showing dashboard screens."
+                  />
+                </div>
+                <div class="case-doc-more-projects__body">
+                  <p class="case-doc-more-projects__eyebrow">Edtech / Classroom app</p>
+                  <h3>Classroom Management</h3>
+                  <p>
+                    A unified platform that simplifies assignments, attendance,
+                    and communication for teachers, students, and parents.
+                  </p>
+                  <span class="case-doc-more-projects__link">Open case study</span>
+                </div>
+              </a>
+
+              <a class="case-doc-more-projects__card" href="./lending-case-study.html">
+                <div class="case-doc-more-projects__visual">
+                  <img
+                    src="./assets/sod-thumbnail.png"
+                    alt="Lending journey case study thumbnail showing multiple mobile screens."
+                  />
+                </div>
+                <div class="case-doc-more-projects__body">
+                  <p class="case-doc-more-projects__eyebrow">Fintech / Lending</p>
+                  <h3>Improving how users move through a lending journey</h3>
+                  <p>
+                    Focused on reducing drop-offs, guiding decisions, and
+                    simplifying the path to disbursal.
+                  </p>
+                  <span class="case-doc-more-projects__link">Open case study</span>
+                </div>
+              </a>
+
+              <a
+                class="case-doc-more-projects__card"
+                href="./guided-investing-case-study.html?v=guided-investing-case-1"
+              >
+                <div class="case-doc-more-projects__visual">
+                  <img
+                    src="./assets/guided-investing-cover-4.png"
+                    alt="Guided investing case study thumbnail showing onboarding and portfolio screens."
+                  />
+                </div>
+                <div class="case-doc-more-projects__body">
+                  <p class="case-doc-more-projects__eyebrow">Personal Project</p>
+                  <h3>Guided Investing for Beginners</h3>
+                  <p>
+                    A structured investing system designed to reduce confusion
+                    for first-time users through clearer steps and guidance.
+                  </p>
+                  <span class="case-doc-more-projects__link">Open case study</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <script src="./script.js?v=classroom-research-60"></script>
+  </body>
+</html>

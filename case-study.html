@@ -3,12 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Reducing drop-offs in a high-friction mandate flow | Chahat Bhatia
-    </title>
+    <title>Classroom Management | Chahat Bhatia</title>
     <meta
       name="description"
-      content="A clear, UX-centered product design case study by Chahat Bhatia on reducing drop-offs in a high-friction mandate flow."
+      content="A clear, UX-centered product design case study by Chahat Bhatia on a classroom management platform for assignments, attendance, and communication."
     />
     <meta
       http-equiv="Cache-Control"
@@ -26,9 +24,9 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=exploration-case-2" />
+    <link rel="stylesheet" href="./styles.css?v=classroom-research-37" />
   </head>
-  <body class="case-page case-doc-page">
+  <body class="case-page case-doc-page case-doc-page--classroom">
     <header class="site-header case-page__header" id="top">
       <div class="shell site-header__inner">
         <a
@@ -44,10 +42,11 @@
         </a>
 
         <nav class="site-nav" aria-label="Case study sections">
-          <a href="#problem">Problem</a>
-          <a href="#approach">Approach</a>
-          <a href="#decisions">Decisions</a>
-          <a href="#impact">Impact</a>
+          <a href="#company">Company</a>
+          <a href="#understanding">Understanding</a>
+          <a href="#solution">Solution</a>
+          <a href="#design">Design</a>
+          <a href="#learnings">Learnings</a>
         </nav>
 
         <a class="site-header__cta" href="./index.html#work">Back to work</a>
@@ -57,180 +56,161 @@
     <main class="case-doc">
       <section class="case-doc-hero" id="overview">
         <div class="shell reveal">
-          <p class="kicker">Professional product design work / Fintech onboarding</p>
+        <p class="kicker">Edtech / Classroom app</p>
           <div class="case-doc-hero__grid">
             <div class="case-doc-hero__title">
-              <h1>Reducing drop-offs in a high-friction mandate flow</h1>
+              <h1>Classroom Management</h1>
             </div>
 
             <div class="case-doc-hero__summary">
               <p>
-                New investors were reaching a required compliance step, then
-                abandoning it because the flow felt opaque, high-risk, and hard
-                to recover from after errors.
-              </p>
-              <p>
-                The redesign focused on making the step easier to understand,
-                easier to trust, and easier to complete without weakening legal
-                or technical requirements.
+                A unified platform that simplifies assignments, attendance, and
+                communication—bringing clarity to workflows and better
+                visibility for teachers, students, and parents.
               </p>
             </div>
           </div>
 
-          <div class="case-doc-meta" aria-label="Case study metadata">
+          <figure
+            class="case-doc-cover case-doc-cover--classroom"
+            aria-label="Classroom management case study thumbnail"
+          >
+            <div class="case-doc-cover__visual">
+              <img
+                class="case-doc-cover__image case-doc-cover__image--classroom"
+                src="./assets/classroom-management-cover-v2.png"
+                alt="Embibe classroom management product screens"
+              />
+            </div>
+          </figure>
+
+          <div class="case-doc-meta" aria-label="Classroom management metadata">
             <div class="case-doc-meta__item">
               <span>Role</span>
-              <strong>Lead Product Designer</strong>
+              <strong>Product Designer</strong>
             </div>
             <div class="case-doc-meta__item">
-              <span>Timeline</span>
-              <strong>10 weeks</strong>
+              <span>Type</span>
+              <strong>EdTech Platform</strong>
             </div>
             <div class="case-doc-meta__item">
-              <span>Team</span>
-              <strong>PM, researcher, 4 engineers, compliance</strong>
+              <span>Stakeholders</span>
+              <strong>Teachers, students, parents</strong>
             </div>
             <div class="case-doc-meta__item case-doc-meta__item--impact">
-              <span>Impact</span>
-              <strong>Completion up, drop-offs down</strong>
+              <span>Focus</span>
+              <strong>Streamlined workflows and real-time visibility</strong>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="case-doc-section" id="problem">
+      <section class="case-doc-section case-doc-company" id="company">
         <div class="shell reveal">
-          <div class="case-doc-section__header">
-            <p class="kicker">Problem</p>
-            <h2>A required step felt heavier than the value it unlocked.</h2>
-          </div>
+          <div class="case-doc-company__grid">
+            <div class="case-doc-company__copy">
+              <div class="case-doc-section__header">
+                <p class="kicker">About the company</p>
+                <h2>What is Embibe?</h2>
+              </div>
 
-          <div class="case-doc-section__body case-doc-section__body--narrow">
-            <p>
-              Users needed to complete a mandate before they could start
-              investing, but the experience felt legal-first, brittle under
-              error states, and unclear about what would happen next. People had
-              intent to continue, but the product was not giving them enough
-              confidence to do it.
-            </p>
+              <div class="case-doc-section__body">
+                <p>
+                  Embibe is an AI-powered education platform that helps
+                  students learn better through personalised content and
+                  insights. It uses data to understand where students are
+                  struggling and provides targeted practice and guidance across
+                  school and competitive exams.
+                </p>
 
-            <ul class="case-doc-list">
-              <li>Progress felt unclear inside a high-trust financial step.</li>
-              <li>Error states appeared abrupt and hard to recover from.</li>
-              <li>Compliance language showed up before reassurance did.</li>
-            </ul>
+                <p>
+                  The platform also supports schools and teachers by helping
+                  them track student progress and manage classrooms more
+                  efficiently. Embibe aims to make learning more effective for
+                  every student and is backed by Reliance Industries.
+                </p>
+              </div>
+            </div>
+
+            <div class="case-doc-company__visual" data-company-visual>
+              <img
+                class="case-doc-company__logo"
+                src="./assets/embibe-logo.png"
+                alt="Embibe logo"
+              />
+
+              <div class="case-doc-company__tags" aria-label="Embibe platform strengths">
+                <span class="case-doc-company__chip">AI learning</span>
+                <span class="case-doc-company__chip">Progress insights</span>
+                <span class="case-doc-company__chip">Classroom support</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="case-doc-section case-doc-section--soft" id="context">
+      <section class="case-doc-section case-doc-research" id="understanding">
+        <div class="shell reveal">
+          <div class="case-doc-research__grid">
+            <div class="case-doc-research__copy">
+              <div class="case-doc-section__header">
+                <p class="kicker">Understanding the problem</p>
+                <h2>What did we learn from teachers?</h2>
+              </div>
+
+              <div class="case-doc-research__body">
+                <p>
+                  To understand how teachers manage their daily classroom
+                  activities, we spoke with educators across different
+                  classroom contexts. The goal was to uncover how they
+                  currently handle attendance, assignments, and communication,
+                  and identify gaps in their existing workflows. These
+                  conversations helped us move beyond assumptions and
+                  understand the real challenges teachers face in their
+                  day-to-day routines.
+                </p>
+              </div>
+            </div>
+
+            <div class="case-doc-research__cards" data-research-cards aria-label="Teacher interview insights">
+              <article class="case-doc-research__card">
+                <p>Teachers switch between registers, notebooks, and messaging platforms to manage different tasks, breaking their workflow.</p>
+              </article>
+              <article class="case-doc-research__card">
+                <p>Attendance and assignment tracking often require duplicate effort, making simple tasks time-consuming.</p>
+              </article>
+              <article class="case-doc-research__card">
+                <p>There’s no quick way to get a clear view of student progress or pending actions in one place.</p>
+              </article>
+              <article class="case-doc-research__card">
+                <p>Updates to parents are often inconsistent or delayed due to reliance on manual methods.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--soft" id="solution">
         <div class="shell reveal">
           <div class="case-doc-section__header">
-            <p class="kicker">Context</p>
-            <h2>Why this mattered for both users and the business.</h2>
+            <p class="kicker">Solution</p>
+            <h2>Simplifying classroom workflows</h2>
           </div>
 
           <div class="case-doc-context">
             <div class="case-doc-section__body">
               <p>
-                For users, confusion here felt expensive and irreversible. This
-                was the point where trust could drop quickly, even if the rest
-                of onboarding felt clear.
-              </p>
-              <p>
-                For the business, this was an activation bottleneck. Qualified
-                users were getting through acquisition, but not crossing the
-                last critical step needed to become active investors.
+                To address these challenges, we designed a unified classroom
+                management experience that brings attendance, assignment
+                tracking, and communication into one place. The goal was to
+                reduce context switching and manual effort by creating a clear
+                starting point for daily tasks, simplifying key actions, and
+                enabling timely communication. By surfacing important actions
+                and insights in a single view, the solution helps teachers stay
+                organized and manage their classrooms with more clarity and
+                less friction.
               </p>
             </div>
-
-            <figure class="case-doc-shot">
-              <div class="mockup mockup--finance case-doc-shot__visual">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <figcaption>High-friction financial step with multiple trust decisions.</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section class="case-doc-section" id="approach">
-        <div class="shell reveal">
-          <div class="case-doc-section__header">
-            <p class="kicker">Approach</p>
-            <h2>Short process, focused checkpoints.</h2>
-          </div>
-
-          <div class="case-doc-steps" aria-label="Approach steps">
-            <article class="case-doc-step">
-              <span>01</span>
-              <h3>Research</h3>
-              <p>
-                Reviewed session recordings, support tickets, and funnel exits
-                to understand where confidence dropped before intent did.
-              </p>
-            </article>
-
-            <article class="case-doc-step">
-              <span>02</span>
-              <h3>Insights</h3>
-              <p>
-                Identified that orientation and recovery mattered more than
-                adding more explanation everywhere.
-              </p>
-            </article>
-
-            <article class="case-doc-step">
-              <span>03</span>
-              <h3>Exploration</h3>
-              <p>
-                Tested clearer hierarchy, more visible progress, and calmer
-                error states across the key decision points.
-              </p>
-            </article>
-
-            <article class="case-doc-step">
-              <span>04</span>
-              <h3>Validation</h3>
-              <p>
-                Reviewed flows with PM, engineering, and compliance to make sure
-                the product improvements still held under real constraints.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="case-doc-section case-doc-section--soft" id="decisions">
-        <div class="shell reveal">
-          <div class="case-doc-section__header">
-            <p class="kicker">Key decisions</p>
-            <h2>Three changes that carried the outcome.</h2>
-          </div>
-
-          <div class="case-doc-decisions">
-            <article class="case-doc-decision">
-              <h3>Reframed the step as guided confirmation.</h3>
-              <p><strong>What changed:</strong> the flow shifted from legal-first language to a clearer guided state with one primary action path.</p>
-              <p><strong>Why:</strong> users needed orientation before they could trust what they were being asked to do.</p>
-              <p><strong>Trade-off:</strong> more up-front explanation meant tighter prioritization of what not to show immediately.</p>
-            </article>
-
-            <article class="case-doc-decision">
-              <h3>Collapsed scattered notices into one persistent summary.</h3>
-              <p><strong>What changed:</strong> supporting information was consolidated into a stable summary instead of being repeated across screens.</p>
-              <p><strong>Why:</strong> people needed the same context to stay visible as they progressed.</p>
-              <p><strong>Trade-off:</strong> the summary component had to handle more states cleanly without becoming dense.</p>
-            </article>
-
-            <article class="case-doc-decision">
-              <h3>Designed explicit recovery for failed bank responses.</h3>
-              <p><strong>What changed:</strong> delayed or failed system states were rewritten as expected recovery paths instead of abrupt dead ends.</p>
-              <p><strong>Why:</strong> technical uncertainty was being interpreted as product failure.</p>
-              <p><strong>Trade-off:</strong> more recovery states increased design and QA scope, but reduced support confusion.</p>
-            </article>
           </div>
         </div>
       </section>
@@ -239,62 +219,93 @@
         <div class="shell reveal">
           <div class="case-doc-section__header">
             <p class="kicker">Design</p>
-            <h2>Clarity, hierarchy, and recoverability made visible.</h2>
+            <h2>The design approach</h2>
           </div>
 
-          <div class="case-doc-design">
-            <figure class="case-doc-shot">
-              <div class="mockup mockup--commerce case-doc-shot__visual">
-                <span></span>
-                <span></span>
-                <span></span>
+          <div class="case-doc-design-showcase">
+            <article class="case-doc-design-showcase__card">
+              <div class="case-doc-design-showcase__content">
+                <span>Screen 01</span>
+                <h3>Centralized Homepage for Classroom Management</h3>
+                <p>
+                  The homepage brings together key classroom actions, pending
+                  tasks, and the day’s schedule, helping teachers stay on top
+                  of their workflow without switching between sections.
+                </p>
+                <p class="case-doc-design-showcase__subheading">Quick actions:</p>
+                <p>Direct access to attendance, assignments, and communication for faster task execution.</p>
+                <p class="case-doc-design-showcase__subheading">Pending tasks:</p>
+                <p>Highlights leave requests and submissions that need immediate attention.</p>
+                <p class="case-doc-design-showcase__subheading">Today’s schedule:</p>
+                <p>A clear view of classes with time and location for better planning.</p>
+                <p class="case-doc-design-showcase__subheading">Class context:</p>
+                <p>Quick access to class and subject details before taking action.</p>
               </div>
-              <figcaption>Before: dense entry point with low orientation.</figcaption>
-            </figure>
 
-            <figure class="case-doc-shot">
-              <div class="mockup mockup--finance case-doc-shot__visual">
-                <span></span>
-                <span></span>
-                <span></span>
+              <div class="case-doc-design-showcase__visual case-doc-design-showcase__visual--classroom-home">
+                <div class="case-doc-design-showcase__home-annotated">
+                  <img
+                    class="case-doc-design-showcase__image case-doc-design-showcase__image--classroom-home"
+                    src="./assets/classroom-homepage-annotated-source.png"
+                    alt="Classroom homepage showing class details, quick actions, pending tasks, and today's schedule."
+                    loading="lazy"
+                  />
+                  <div class="case-doc-design-showcase__callout-lines" aria-hidden="true"></div>
+                  <span class="case-doc-design-showcase__callout case-doc-design-showcase__callout--class-context">Class context</span>
+                  <span class="case-doc-design-showcase__callout case-doc-design-showcase__callout--quick-actions">Quick actions</span>
+                  <span class="case-doc-design-showcase__callout case-doc-design-showcase__callout--pending-tasks">Pending tasks</span>
+                  <span class="case-doc-design-showcase__callout case-doc-design-showcase__callout--todays-schedule">Today's schedule</span>
+                </div>
               </div>
-              <figcaption>After: stronger hierarchy and a calmer primary decision.</figcaption>
-            </figure>
+            </article>
 
-            <figure class="case-doc-shot case-doc-shot--wide">
-              <div class="mockup mockup--system case-doc-shot__visual">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="case-doc-modules" data-core-modules>
+              <div class="case-doc-modules__intro">
+                <h3>Core Modules</h3>
+                <p>
+                  The product is divided into four main modules so teachers can
+                  move from overview to action without leaving the same
+                  workflow.
+                </p>
               </div>
-              <figcaption>Recovery states became legible, guided, and easier to trust.</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
 
-      <section class="case-doc-section case-doc-section--soft" id="impact">
-        <div class="shell reveal">
-          <div class="case-doc-section__header">
-            <p class="kicker">Impact</p>
-            <h2>Directional outcomes, kept honest.</h2>
-          </div>
+              <div class="case-doc-modules__selector" role="tablist" aria-label="Core classroom modules">
+                <button class="case-doc-modules__tab is-active" type="button" role="tab" aria-selected="true" data-module-tab="dashboard">
+                  <span>01</span>
+                  <strong>Assign</strong>
+                  <small>Create and manage classwork</small>
+                </button>
+                <button class="case-doc-modules__tab" type="button" role="tab" aria-selected="false" data-module-tab="attendance">
+                  <span>02</span>
+                  <strong>Attendance</strong>
+                  <small>Mark, track, and review presence</small>
+                </button>
+                <button class="case-doc-modules__tab" type="button" role="tab" aria-selected="false" data-module-tab="assignments">
+                  <span>03</span>
+                  <strong>Communicate</strong>
+                  <small>Share updates and stay connected</small>
+                </button>
+                <button class="case-doc-modules__tab" type="button" role="tab" aria-selected="false" data-module-tab="communication">
+                  <span>04</span>
+                  <strong>Performance Tracking</strong>
+                  <small>Monitor student progress and outcomes over time</small>
+                </button>
+              </div>
 
-          <div class="case-doc-impact">
-            <div class="case-doc-impact__metric">
-              <span>Completion</span>
-              <strong>Up</strong>
-              <p>More users made it through the mandate step successfully.</p>
-            </div>
-            <div class="case-doc-impact__metric">
-              <span>Drop-offs</span>
-              <strong>Down</strong>
-              <p>Abandonment reduced at the highest-friction point in onboarding.</p>
-            </div>
-            <div class="case-doc-impact__metric">
-              <span>Support load</span>
-              <strong>Lighter</strong>
-              <p>Fewer users needed help understanding failures or next steps.</p>
+              <div class="case-doc-modules__panel" data-core-modules-panel role="tabpanel" aria-label="01 Assign Create and manage classwork">
+                <div class="case-doc-modules__summary">
+                  <div class="case-doc-modules__meta">
+                    <span class="case-doc-modules__eyebrow" data-core-modules-kicker>Module 01</span>
+                    <h4 data-core-modules-title>Assign</h4>
+                  </div>
+                  <p data-core-modules-description>
+                    A focused classwork flow that helps teachers create, organize,
+                    and manage assignments from setup to final review.
+                  </p>
+                </div>
+
+                <div class="case-doc-modules__screens" data-core-modules-screens></div>
+              </div>
             </div>
           </div>
         </div>
@@ -304,21 +315,109 @@
         <div class="shell reveal">
           <div class="case-doc-section__header">
             <p class="kicker">Learnings</p>
-            <h2>What this sharpened in my product thinking.</h2>
+            <h2>Reflections from the Process</h2>
           </div>
 
           <div class="case-doc-section__body case-doc-section__body--narrow">
-            <ul class="case-doc-list">
-              <li>Trust gaps are often hierarchy problems before they are content problems.</li>
-              <li>Recovery design matters most when technical systems are inconsistent.</li>
-              <li>Reducing friction does not always mean reducing information.</li>
-              <li>Strong product outcomes come from clarifying the decision, not polishing every surface.</li>
-            </ul>
+            <p>
+              Designing this classroom management system made me realise that
+              the real challenge isn&rsquo;t feature complexity, but the number
+              of decisions teachers make every day. The product needed to
+              support performance tracking, attendance, assignments,
+              behaviour, and communication without overwhelming them.
+            </p>
+            <p>
+              A key learning was the importance of clear mental models.
+              Structuring the experience into a simple flow&mdash;assign
+              &rarr; track &rarr; understand &rarr; act&mdash;made the system
+              more intuitive and easier to navigate across modules, whether it
+              was tracking performance, monitoring attendance, or
+              communicating with parents.
+            </p>
+            <p>
+              I also learned that data is only valuable when it drives action.
+              Highlighting insights like &ldquo;Needs Attention&rdquo; isn&rsquo;t
+              enough&mdash;teachers need clear next steps, whether it&rsquo;s
+              following up on low attendance, assigning extra practice, or
+              reaching out to parents.
+            </p>
+            <p>
+              Finally, this project reinforced how information hierarchy and
+              small UI details like status tags, filters, and visual cues play
+              a big role in reducing cognitive load and helping teachers
+              quickly move between tracking, insights, and communication.
+            </p>
           </div>
 
-          <div class="case-doc-footer">
-            <a class="button button--dark" href="./index.html#work">Back to selected work</a>
-            <a class="text-link" href="./index.html#contact">Discuss a similar product problem</a>
+        </div>
+      </section>
+
+      <section class="case-doc-section case-doc-section--more-projects" id="view-other-projects">
+        <div class="shell reveal">
+          <div class="case-doc-more-projects">
+            <div class="case-doc-section__header">
+              <p class="kicker">View Other Projects</p>
+              <h2>Keep exploring the work</h2>
+            </div>
+
+            <div class="case-doc-more-projects__grid">
+              <a class="case-doc-more-projects__card" href="./lending-case-study.html">
+                <div class="case-doc-more-projects__visual">
+                  <img
+                    src="./assets/sod-thumbnail.png"
+                    alt="Lending journey case study thumbnail showing multiple mobile screens."
+                  />
+                </div>
+                <div class="case-doc-more-projects__body">
+                  <p class="case-doc-more-projects__eyebrow">Fintech / Lending</p>
+                  <h3>Improving how users move through a lending journey</h3>
+                  <p>
+                    A sharper look at reducing drop-offs, guiding decisions, and
+                    simplifying the path to disbursal.
+                  </p>
+                  <span class="case-doc-more-projects__link">Open case study</span>
+                </div>
+              </a>
+
+              <a class="case-doc-more-projects__card" href="./refyne-case-study.html">
+                <div class="case-doc-more-projects__visual">
+                  <img
+                    src="./assets/refyne-context.png"
+                    alt="Refyne homepage redesign thumbnail showing dashboard and service modules."
+                  />
+                </div>
+                <div class="case-doc-more-projects__body">
+                  <p class="case-doc-more-projects__eyebrow">Fintech / Homepage</p>
+                  <h3>Rethinking the Homepage for Clarity, Discovery, and Growth</h3>
+                  <p>
+                    A design-led exploration of turning a single-use dashboard
+                    into a more scalable fintech experience.
+                  </p>
+                  <span class="case-doc-more-projects__link">Open case study</span>
+                </div>
+              </a>
+
+              <a
+                class="case-doc-more-projects__card"
+                href="./guided-investing-case-study.html?v=guided-investing-case-1"
+              >
+                <div class="case-doc-more-projects__visual">
+                  <img
+                    src="./assets/guided-investing-cover-4.png"
+                    alt="Guided investing case study thumbnail showing onboarding and portfolio screens."
+                  />
+                </div>
+                <div class="case-doc-more-projects__body">
+                  <p class="case-doc-more-projects__eyebrow">Personal Project</p>
+                  <h3>Guided Investing for Beginners</h3>
+                  <p>
+                    A structured investing system designed to reduce confusion
+                    for first-time users through clearer steps and guidance.
+                  </p>
+                  <span class="case-doc-more-projects__link">Open case study</span>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -327,6 +426,6 @@
     <div class="cursor-dot" aria-hidden="true"></div>
     <div class="cursor-ring" aria-hidden="true"></div>
 
-    <script src="./script.js?v=exploration-case-2"></script>
+    <script src="./script.js?v=classroom-research-60"></script>
   </body>
 </html>
