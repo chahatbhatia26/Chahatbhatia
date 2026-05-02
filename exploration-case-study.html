@@ -744,6 +744,52 @@
     <div class="cursor-dot" aria-hidden="true"></div>
     <div class="cursor-ring" aria-hidden="true"></div>
 
+    <script>
+      (() => {
+        const params = new URLSearchParams(window.location.search);
+
+        if (params.get("project") !== "money-co-pilot") {
+          return;
+        }
+
+        document.title = "Money Co-Pilot for Everyday Life | Chahat Bhatia";
+
+        const metaDescription = document.querySelector(
+          'meta[name="description"]'
+        );
+        const kicker = document.querySelector(".case-doc-hero .kicker");
+        const title = document.querySelector(".case-doc-hero__title h1");
+        const summary = document.querySelector(".case-doc-hero__summary p");
+        const coverImage = document.querySelector(".case-doc-cover__image");
+
+        if (metaDescription) {
+          metaDescription.setAttribute(
+            "content",
+            "A short, UX-focused preview case study by Chahat Bhatia for a personal expense tracker exploration."
+          );
+        }
+
+        if (kicker) {
+          kicker.textContent = "Personal project / Expense tracker";
+        }
+
+        if (title) {
+          title.textContent = "Money Co-Pilot for Everyday Life";
+        }
+
+        if (summary) {
+          summary.textContent =
+            "Helping users move from unclear spending to confident decisions through behavior-driven insights and simple, actionable guidance.";
+        }
+
+        if (coverImage) {
+          coverImage.src = "./assets/money-co-pilot-thumb.png";
+          coverImage.alt =
+            "Money Co-Pilot screens showing AI-guided spending insights, safe-to-spend summaries, category-level issue spotting, and goal progress guidance.";
+        }
+      })();
+    </script>
+
     <script src="./script.js?v=exploration-case-2"></script>
   </body>
 </html>
