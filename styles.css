@@ -1568,7 +1568,7 @@ h3 {
 .play-card {
   position: relative;
   display: grid;
-  grid-template-rows: 11.75rem 1fr;
+  grid-template-rows: 14rem 1fr;
   gap: 1.1rem;
   overflow: hidden;
   min-height: 28.5rem;
@@ -1691,6 +1691,15 @@ h3 {
   color: rgba(255, 250, 244, 0.72);
   font-size: 0.95rem;
   line-height: 1.75;
+}
+
+.play-card__eyebrow {
+  margin: 0;
+  color: rgba(255, 250, 244, 0.6);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .play-card__meta {
@@ -2483,7 +2492,7 @@ h3 {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: end;
-  gap: clamp(1rem, 2vw, 1.4rem);
+  gap: 32px;
   width: min(72%, 34rem);
 }
 
@@ -3122,6 +3131,7 @@ h3 {
   }
 
   .play-card {
+    grid-template-rows: 10.5rem 1fr;
     min-height: 19rem;
     padding: 0.95rem;
   }
