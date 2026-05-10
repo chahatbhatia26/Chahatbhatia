@@ -27,6 +27,7 @@ const movePause = 0.36;
 const solvedHold = 2.4;
 const animationClock = { elapsed: 0, last: performance.now() };
 let animationActive = !statement;
+let animationFrameId = 0;
 
 const makeVec = (x, y, z) => ({ x, y, z });
 const addVec = (a, b) => makeVec(a.x + b.x, a.y + b.y, a.z + b.z);
@@ -542,30 +543,45 @@ const renderCube = () => {
 };
 
 const tick = (now) => {
+  animationFrameId = 0;
   const delta = Math.min((now - animationClock.last) / 1000, 0.05);
   animationClock.last = now;
 
-  if (!reducedMotion && animationActive) {
+  if (!reducedMotion && animationActive && !document.hidden) {
     animationClock.elapsed += delta;
-  } else if (reducedMotion) {
-    animationClock.elapsed = solveTimelineDuration;
   }
 
   renderCube();
-  requestAnimationFrame(tick);
+
+  if (!reducedMotion && animationActive && !document.hidden) {
+    animationFrameId = requestAnimationFrame(tick);
+  }
+};
+
+const requestTick = () => {
+  if (animationFrameId || reducedMotion || document.hidden || !animationActive) {
+    return;
+  }
+
+  animationClock.last = performance.now();
+  animationFrameId = requestAnimationFrame(tick);
 };
 
 if (statement && "IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animationActive = true;
-          observer.disconnect();
+        animationActive = entry.isIntersecting;
+
+        if (animationActive) {
+          requestTick();
+        } else if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = 0;
         }
       });
     },
-    { threshold: 0.24 }
+    { rootMargin: "160px 0px", threshold: 0.01 }
   );
 
   observer.observe(statement);
@@ -573,5 +589,20 @@ if (statement && "IntersectionObserver" in window) {
   animationActive = true;
 }
 
-requestAnimationFrame(tick);
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden && animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = 0;
+    return;
+  }
+
+  requestTick();
+});
+
+if (reducedMotion) {
+  animationClock.elapsed = solveTimelineDuration;
+  renderCube();
+} else {
+  requestTick();
+}
 })();

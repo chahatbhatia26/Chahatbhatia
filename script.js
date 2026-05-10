@@ -925,56 +925,6 @@ if (!reducedMotion && "IntersectionObserver" in window) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-if (!reducedMotion && hero) {
-  let currentX = 0;
-  let currentY = 0;
-  let targetX = 0;
-  let targetY = 0;
-  let scrollOffset = 0;
-
-  const render = () => {
-    currentX += (targetX - currentX) * 0.08;
-    currentY += (targetY - currentY) * 0.08;
-
-    hero.style.setProperty("--hero-shift-x", `${currentX}px`);
-    hero.style.setProperty("--hero-shift-y", `${currentY - scrollOffset}px`);
-
-    window.requestAnimationFrame(render);
-  };
-
-  hero.addEventListener(
-    "pointermove",
-    (event) => {
-      const bounds = hero.getBoundingClientRect();
-      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-
-      targetX = x * 20;
-      targetY = y * 16;
-    },
-    { passive: true }
-  );
-
-  hero.addEventListener(
-    "pointerleave",
-    () => {
-      targetX = 0;
-      targetY = 0;
-    },
-    { passive: true }
-  );
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      scrollOffset = Math.min(window.scrollY * 0.015, 8);
-    },
-    { passive: true }
-  );
-
-  render();
-}
-
 if (offGridCarousel) {
   const track = offGridCarousel.querySelector(".off-grid__track");
   const originalCards = track
@@ -999,6 +949,9 @@ if (offGridCarousel) {
   let loopWidth = 0;
   let pauseUntil = 0;
   let pointerPaused = false;
+  let carouselInView = false;
+  let offGridAnimationFrame = 0;
+  let animateOffGrid = null;
   let lastAutoTime = performance.now();
   const autoScrollSpeed = 0.055;
 
@@ -1071,6 +1024,31 @@ if (offGridCarousel) {
   offGridCarousel.addEventListener("scroll", requestOffGridUpdate, {
     passive: true,
   });
+
+  if ("IntersectionObserver" in window) {
+    const carouselObserver = new IntersectionObserver(
+      (entries) => {
+        carouselInView = entries.some((entry) => entry.isIntersecting);
+        lastAutoTime = performance.now();
+
+        if (carouselInView) {
+          requestOffGridUpdate();
+          if (shouldAutoAnimate && animateOffGrid && !offGridAnimationFrame) {
+            lastAutoTime = performance.now();
+            offGridAnimationFrame = window.requestAnimationFrame(animateOffGrid);
+          }
+        } else if (offGridAnimationFrame) {
+          window.cancelAnimationFrame(offGridAnimationFrame);
+          offGridAnimationFrame = 0;
+        }
+      },
+      { rootMargin: "160px 0px", threshold: 0.01 }
+    );
+
+    carouselObserver.observe(offGridCarousel);
+  } else {
+    carouselInView = true;
+  }
 
   window.addEventListener("resize", () => {
     measureLoop();
@@ -1168,12 +1146,22 @@ if (offGridCarousel) {
   );
 
   if (shouldAutoAnimate) {
-    const animateOffGrid = (now) => {
+    animateOffGrid = (now) => {
+      offGridAnimationFrame = 0;
+
+      if (!carouselInView || document.hidden) {
+        return;
+      }
+
       const delta = Math.min(now - lastAutoTime, 48);
       const hasFocus =
         document.activeElement && offGridCarousel.contains(document.activeElement);
       const isPaused =
-        pointerPaused || hasFocus || pauseUntil > now || document.hidden;
+        !carouselInView ||
+        pointerPaused ||
+        hasFocus ||
+        pauseUntil > now ||
+        document.hidden;
 
       lastAutoTime = now;
 
@@ -1187,18 +1175,30 @@ if (offGridCarousel) {
         requestOffGridUpdate();
       }
 
-      window.requestAnimationFrame(animateOffGrid);
+      offGridAnimationFrame = window.requestAnimationFrame(animateOffGrid);
     };
 
     document.addEventListener("visibilitychange", () => {
       lastAutoTime = performance.now();
+
+      if (document.hidden && offGridAnimationFrame) {
+        window.cancelAnimationFrame(offGridAnimationFrame);
+        offGridAnimationFrame = 0;
+      } else if (carouselInView && !offGridAnimationFrame) {
+        offGridAnimationFrame = window.requestAnimationFrame(animateOffGrid);
+      }
     });
 
-    window.requestAnimationFrame(animateOffGrid);
+    if (carouselInView) {
+      offGridAnimationFrame = window.requestAnimationFrame(animateOffGrid);
+    }
   }
 }
 
-const supportsCustomCursor = false;
+const supportsCustomCursor =
+  Boolean(cursorDot && cursorRing) &&
+  !reducedMotion &&
+  window.matchMedia("(pointer: fine)").matches;
 
 if (supportsCustomCursor) {
   document.documentElement.classList.add("has-custom-cursor");
